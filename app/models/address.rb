@@ -11,4 +11,5 @@
 #  customer_id :integer          not null
 #
 class Address < ApplicationRecord
+  belongs_to :customer
 end

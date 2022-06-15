@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Genre < ApplicationRecord
+  has_many :items, dependent: :destroy
 end
