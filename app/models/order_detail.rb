@@ -12,4 +12,6 @@
 #  order_id      :integer          not null
 #
 class OrderDetail < ApplicationRecord
+  belongs_to :item
+  belongs_to
 end
