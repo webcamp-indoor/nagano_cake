@@ -1,2 +1,28 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+header{
+  width:100%;
+  height:100px;
+  background-color:#dcdcdc;
+}
+
+a:hover{
+  text-decoration:none;
+}
+.welcome-customer {
+  margin-top: 40px;
+}
+.store-name {
+  text-decoration: none;
+  color: #181717;
+  font-size: 40px;
+  line-height: 100px;
+}
+
+.header-link{
+  line-height: 100px;
+  position:absolute;
+  right:20px;
+}
+
