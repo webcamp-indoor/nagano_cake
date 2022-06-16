@@ -1,2 +1,48 @@
-<h1>Public::Orders#new</h1>
-<p>Find me in app/views/public/orders/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center mb-5">注文情報入力</h2>
+      <%= form_with model:@order, url:confirm_orders_path, method: :post do |f|%>
+        <h3>支払方法</h3>
+          <%= f.radio_button :payment_method, Order.payment_methods.key(0), class:"ml-5" %>
+          <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %> <br>
+
+          <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-5" %>
+          <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+        <h3>お届け先</h3>
+        <div class="ml-5">
+          <%= f.radio_button :address_select, 0, checked: true %>
+          <%= f.label :address_select, "ご自身の住所" %> <br>
+          <span class="ml-3"><%= "〒" + current_customer.post_code + " " + current_customer.address %></span> <br>
+          <span class="ml-3"><%= current_customer.last_name + current_customer.first_name %></span>
+        </div>
+        <div class="ml-5">
+          <%= f.radio_button :address_select, 1 %>
+          <%= f.label :address_select, "登録済住所から選択" %> <br>
+          <div class="ml-3"><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></div>
+        </div>
+        <div class="ml-5">
+          <%= f.radio_button :address_select, 2 %>
+          <%= f.label :address_select, "新しいお届け先" %>
+          <div class="form-group ml-3">
+            <%= f.label :post_code, "郵便番号(ハイフンなし)" %>
+            <%= f.text_field :post_code %>
+          </div>
+          <div class="form-group ml-3">
+            <%= f.label :address, "住所" %>
+            <%= f.text_field :address %>
+          </div>
+          <div class="form-group ml-3">
+            <%= f.label :name, "宛名" %>
+            <%= f.text_field :name %>
+          </div>
+        </div>
+        <div class="text-center mb-3">
+          <%= f.submit "確認画面へ進む", class:"btn btn-primary"%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
