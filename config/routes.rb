@@ -3,10 +3,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+
 
   scope module: :public do
     root to: 'homes#top'
@@ -17,7 +14,7 @@ Rails.application.routes.draw do
       patch "withdrawal" => "customers#withdrawal"
     end
 
-    resources :address, only:[:index, :create, :destroy, :edit, :update]
+    resources :addresses, only:[:index, :create, :destroy, :edit, :update]
 
     resources :items, only:[:index, :show]
 
@@ -35,6 +32,11 @@ Rails.application.routes.draw do
     end
   end
 
+  devise_for :customers, skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
   namespace :admin do
     get "/" => "homes#top"
 
@@ -49,7 +51,7 @@ Rails.application.routes.draw do
     resources :order_details, only:[:update]
   end
 
-  
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
