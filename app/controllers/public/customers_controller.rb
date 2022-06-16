@@ -10,6 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
+      flash[:notice] = "保存されました"
       redirect_to customers_path
     else
       flash[:notice] = "入力内容に誤りがあります"
@@ -22,7 +23,11 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdrawal
-
+    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行しました"
+    redirect_to root_path
   end
 
 private
