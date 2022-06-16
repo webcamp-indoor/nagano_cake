@@ -10,6 +10,7 @@ class Public::CustomersController < ApplicationController
 
   def update
     if @customer.update(customer_params)
+      flash[:notice] = "保存されました"
       redirect_to customers_path
     else
       flash[:notice] = "入力内容に誤りがあります"
