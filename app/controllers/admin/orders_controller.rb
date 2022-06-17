@@ -17,7 +17,8 @@ class Admin::OrdersController < ApplicationController
   end
 
   def customer_index
-
+    @customer = Customer.find(params[:id])
+    @orders = @customer.orders
   end
 
   private
@@ -29,4 +30,5 @@ class Admin::OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
+
 end
