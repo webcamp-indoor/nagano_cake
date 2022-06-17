@@ -1,2 +1,20 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center mb-5">注文履歴詳細</h2>
+    </div>
+    <table>
+      <tr>
+        <th>購入者</th>
+        thq
+      </tr>
+    </table>
+    <div class="col-2">購入者</div>
+    <div class="col-8"><%= link_to @order.customer.last_name + @order.customer.first_name, admin_customer_path(@order.customer.id) %></div>
+    
+    <div class="col-2">注文日</div>
+    <div class="col-8"><%= @order.customer.last_name + @order.customer.first_name %></div>
+
+
+  </div>
+</div>
