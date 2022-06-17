@@ -1,2 +1,81 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<div class="row">
+  <div class="col-12 col-md-10 offset-md-1 py-3 mb-3">
+    <h2>ショッピングカート</h2>
+    <% if @cart_items.present? %>
+      <!--ALL削除ボタン-->
+      <div class="text-right mb-4">
+        <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete,
+            data: {confim: 'カートを空にしてもよろしいでしょうか？'}, class: "btn btn-danger" %>
+      </div>
+
+      <!--カート一覧-->
+      <table class="table table-bordered">
+        <thead>
+          <tr class="table-secondary">
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <!--画像・商品名-->
+              <td>
+                <%= image_tag cart_item.item.get_image(100,100) %>
+                <%= cart_item.item.name %>
+              </td>
+              <!--単価(税込)-->
+              <td>
+                <%= cart_item.item.tax_price.to_s(:delimited) %>
+              </td>
+              <!--数量・変更-->
+              <td>
+                <%= form_with model: cart_item, url: cart_item_path(cart_item), remote: true, method: :patch do |f| %>
+                  <%= f.select :count, (1..20).to_a %>
+                  <%= f.submit "変更", class: "btn btn-success" %>
+                <% end %>
+              </td>
+              <!--小計-->
+              <td>
+                <%= cart_item.subtotal.to_s(:delimited) %>
+              </td>
+              <!--削除-->
+              <td>
+                <%= link_to "削除する", cart_item_path(cart_item), method: :delete, remote: true,
+                    data: {confim: "#{cart_item.item.name}を削除してもよろしいですか？"}, class: "btn btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <!--買い物を続ける-->
+      <div class="text-left">
+        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary" %>
+      </div>
+
+      <!--合計金額-->
+      <div class="d-flex justify-content-end">
+        <table class="table table-bordered col-md-3">
+          <tr>
+            <th class="table-secondary">合計金額</th>
+            <th><%= @total.round.to_s(:delimited) %></td>
+          </tr>
+        </table>
+      </div>
+
+      <!--注文処理へ-->
+      <div class="text-center">
+        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+      </div>
+
+    <% else %>
+      <!--カートに商品がない場合-->
+      <p>ショッピングカートに商品がありません。</p>
+      <p><%= link_to "商品一覧", items_path %>からお探しください。</p>
+    <% end %>
+  </div>
+</div>

@@ -24,5 +24,9 @@ class Item < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-
+  
+  # カート機能/消費税をプラスした価格
+  def tax_price
+    (price * 1.1).floor
+  end
 end
