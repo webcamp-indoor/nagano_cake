@@ -1,2 +1,65 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <h2><%= @customer.last_name %>  <%= @customer.first_name %>さんの会員詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>会員ID</th>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <th>フリガナ</th>
+            <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= @customer.post_code %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+             <% if @customer.is_deleted %>
+                <span style="color:gray;">退会</span>
+              <% else %>
+                <span style="color:green;">有効</span>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div>
+          <%= link_to "顧客一覧に戻る", admin_customers_path, class:"btn btn-secondary mr-3" %>
+        </div>
+        <div>
+          <%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success mr-3" %>
+        </div>
+        <div>
+          <!--顧客ごとの一覧Routing作る(ワイヤーフレーム参照　btn btn-primary)-->
+          注文履歴一覧を見る
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
