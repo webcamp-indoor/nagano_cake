@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+  <tr>
+    <th class="table-secondary">送料</th>
+    <td><%= order.postage.to_s(:delimited) %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">商品合計</th>
+    <td><%= order.total_payment.to_s(:delimited) %></td>
+  </tr>
+  <tr>
+    <th class="table-secondary">請求金額</th>
+    <td><%= (order.postage + order.total_payment).to_s(:delimited) %></td>
+  </tr>
+</table>

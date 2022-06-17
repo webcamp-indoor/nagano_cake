@@ -1,0 +1,24 @@
+<table class="table table-bordered mb-4">
+  <thead>
+    <tr class="table-secondary">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% cart_items.each do |cart_item| %>
+      <tr>
+        <td class="align-middle">
+          <%= image_tag cart_item.item.get_image(100,100) %>
+          <%= cart_item.item.name %>
+        </td>
+        <!--金額の算出は橋本さんのカート機能と合わせる-->
+        <td class="align-middle"><%= (cart_item.item.price*1.1).floor.to_s(:delimited) %></td>
+        <td class="align-middle"><%= cart_item.count %></td>
+        <td class="align-middle"><%= ((cart_item.item.price*1.1).floor*cart_item.count).to_s(:delimited) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
