@@ -1,2 +1,44 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-center mb-5">注文履歴詳細</h2>
+    </div>
+    <div class="col-8">
+      <div class="my-2">注文情報</div>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <th class="table-secondary">注文日</th>
+              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">配送先</th>
+              <td>
+                <%= "〒" + @order.post_code %> <br>
+                <%= @order.address %> <br>
+                <%= @order.name %>
+              </td>
+            </tr>
+            <tr>
+              <th class="table-secondary">支払方法</th>
+              <td><%= @order.payment_method_i18n %></td>
+            </tr>
+            <tr>
+              <th class="table-secondary">ステータス</th>
+              <td><%= @order.status_i18n %></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+      <div class="my-2">請求情報</div>
+      <%= render "total_payment_table", order: @order %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="my-2">注文内容</div>
+      <%= render "cart_item_table", cart_items: @order_details %>
+    </div>
+  </div>
+</div>

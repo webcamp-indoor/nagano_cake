@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  count         :integer          not null
-#  making_status :integer          not null
+#  making_status :integer          default(0), not null
 #  price         :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

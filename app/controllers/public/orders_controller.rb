@@ -31,7 +31,6 @@ class Public::OrdersController < ApplicationController
         order_detail.item_id = cart_item.item_id
         order_detail.count = cart_item.count
         order_detail.price = cart_item.item.price
-        order_detail.making_status = 0 #あとで設定する！
         order_detail.save
       end
       # cart_items.destroy_all
@@ -43,9 +42,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all #ページネーションつけてもいいかも
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = OrderDetail.where(order_id: @order.id)
   end
 
   private

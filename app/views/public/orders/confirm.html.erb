@@ -4,52 +4,15 @@
       <h2 class="text-center mb-5">注文情報確認</h2>
     </div>
     <div class="col-8">
-      <table class="table table-bordered mb-4">
-        <thead>
-          <tr class="table-secondary">
-            <th>商品名</th>
-            <th>単価(税込)</th>
-            <th>数量</th>
-            <th>小計</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @cart_items.each do |cart_item| %>
-            <tr>
-              <td class="align-middle">
-                <%= image_tag cart_item.item.get_image(100,100) %>
-                <%= cart_item.item.name %>
-              </td>
-              <!--金額の算出は橋本さんのカート機能と合わせる-->
-              <td class="align-middle"><%= (cart_item.item.price*1.1).floor.to_s(:delimited) %></td>
-              <td class="align-middle"><%= cart_item.count %></td>
-              <td class="align-middle"><%= ((cart_item.item.price*1.1).floor*cart_item.count).to_s(:delimited) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+     <%= render "cart_item_table", cart_items: @cart_items %>
     </div>
     <div class="col-4">
-      <table class="table table-bordered">
-        <tr>
-          <th class="table-secondary">送料</th>
-          <td><%= @order.postage.to_s(:delimited) %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary">商品合計</th>
-          <td><%= @order.total_payment.to_s(:delimited) %></td>
-        </tr>
-        <tr>
-          <th class="table-secondary">請求金額</th>
-          <td><%= (@order.postage + @order.total_payment).to_s(:delimited) %></td>
-        </tr>
-      </table>
+      <%= render "total_payment_table", order: @order %>
     </div>
   </div>
   <div class="mb-4">
     <span>支払方法</span>
-    <!--日本語化するのを忘れずに-->
-    <%= @order.payment_method %>  日本語化したい
+    <%= @order.payment_method_i18n %>
   </div>
   <div class="mb-4">
     お届け先
