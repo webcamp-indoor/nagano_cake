@@ -10,7 +10,7 @@
   <!--カート機能-->
   <%= form_with model: @cart_item, url: cart_items_path do |f| %>
     <%= f.hidden_field :item_id, value: @item.id %>
-    <%= f.number_field :count, step: "1", placeholder: "個数入力" %>
+    <%= f.number_field :count, step: "1", placeholder: "個数入力", min: 1 %>
     <%= f.submit "カートに入れる", class: "btn btn-success" %>
   <% end %>
 </div>
