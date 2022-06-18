@@ -56,8 +56,7 @@
           <%= link_to "編集する", edit_admin_customer_path(@customer), class:"btn btn-success mr-3" %>
         </div>
         <div>
-          <!--顧客ごとの一覧Routing作る(ワイヤーフレーム参照　btn btn-primary)-->
-          注文履歴一覧を見る
+          <%= link_to "注文履歴一覧を見る", order_index_admin_customer_path(@customer), class:"btn btn-primary"%>
         </div>
       </div>
     </div>
