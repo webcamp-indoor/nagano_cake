@@ -15,10 +15,6 @@ class Public::CartItemsController < ApplicationController
     if @old_cart_item.present?
       @cart_item.count += @old_cart_item.count
       @old_cart_item.destroy
-      if @cart_item.count > 20
-        @cart_item.count = 20
-        flash[:alert] = '1度に購入できる個数は20個までになります。'
-      end
     end
     # 保存
     if @cart_item.save
@@ -40,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    flash[:notice] = "カートの商品が削除されました"
+    flash[:notice] = "カート内の商品が削除されました"
     redirect_to cart_items_path
   end
 
