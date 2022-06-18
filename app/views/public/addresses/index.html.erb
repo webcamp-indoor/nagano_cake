@@ -1,8 +1,8 @@
 <div class="container">
  <h2 class="text-center">配送先登録/一覧</h2>
  <div class="row mt-5">
-   <table class="mx-auto">
-     <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+  <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+    <table class="mx-auto">
      <tr>
        <td><%= f.label :"郵便番号(ハイフンなし)"%></td>
        <td><%= f.text_field :post_code, class: "form-control" %></td>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= f.submit '登録する' ,class: "btn btn-success mt-3 mb-5 d-block mx-auto" %></td>
       </tr>
-    <% end %>
    </table>
+  <% end %>
  </div>
 
 
@@ -33,7 +33,7 @@
           <th colspan="2"></th>
         </tr>
       </thead>
-  
+
       <tbody>
         <% @addresses.each do |address| %>
           <tr>
