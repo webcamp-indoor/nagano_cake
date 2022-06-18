@@ -6,9 +6,15 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
+    @item = Item.new #エラー後に続けて入力するために必要
     item = Item.new(item_params)
-    item.save
-    redirect_to admin_items_path
+    if item.save
+      flash[:notice] = '新規登録しました'
+      redirect_to admin_items_path
+    else
+      flash[:alert] = '入力が間違っています'
+      render :new
+    end
   end
 
   def index
@@ -22,8 +28,13 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    redirect_to admin_item_path(params[:id])
+    if @item.update(item_params)
+      flash[:notice] = '更新しました。'
+      redirect_to admin_item_path(params[:id])
+    else
+      flash[:alert] = '入力が間違っています。'
+      render :edit
+    end
   end
 
   private
