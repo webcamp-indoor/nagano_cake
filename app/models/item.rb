@@ -17,6 +17,10 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_one_attached :image
 
+  validates :introduction, presence: true
+  validates :name, presence: true
+  validates :price, presence: true, numericality: { only_integer: true }
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/no_image.jpeg")
@@ -24,7 +28,7 @@ class Item < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
-  
+
   # カート機能/消費税をプラスした価格
   def tax_price
     (price * 1.1).floor

@@ -18,6 +18,12 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details, dependent: :destroy
 
+  validates :address, presence: true
+  validates :name, presence: true
+  validates :post_code, presence: true, length: { is: 7 }, numericality: { only_integer: true }
+  validates :postage, presence: true, numericality: { only_integer: true }
+  # validates :total_payment, presence: true, numericality: { only_integer: true }
+
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: { payment_waiting: 0, payment_confirmation: 1, in_making: 2, preparing_shipping: 3, shipping: 4 }
 
