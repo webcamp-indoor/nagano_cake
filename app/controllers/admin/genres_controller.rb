@@ -7,17 +7,29 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    @genre = Genre.new #エラー後に続けて入力するために必要
+    @genres = Genre.all #エラー後に続けて入力するために必要
     genre = Genre.new(genre_params)
-    genre.save
-    redirect_to admin_genres_path
+    if genre.save
+      flash[:notice] = '新規登録しました'
+      redirect_to admin_genres_path
+    else
+      flash[:alert] = '入力してください'
+      render :index
+    end
   end
 
   def edit
   end
 
   def update
-    @genre.update(genre_params)
-    redirect_to admin_genres_path
+    if @genre.update(genre_params)
+      flash[:notice] = "更新しました"
+      redirect_to admin_genres_path
+    else
+      flash[:alert] = "入力してください"
+      render :edit
+    end
   end
 
   private
@@ -25,7 +37,7 @@ class Admin::GenresController < ApplicationController
   def genre_params
     params.require(:genre).permit(:name)
   end
-  
+
   def set_genre
     @genre = Genre.find(params[:id])
   end

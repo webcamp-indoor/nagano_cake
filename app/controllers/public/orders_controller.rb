@@ -14,10 +14,20 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_select] == "1"
-      @address = Address.find(params[:order][:address_id])
-      @order.post_code = @address.post_code
-      @order.address = @address.address
-      @order.name = @address.name
+      if Address.all.blank?
+        flash[:alert] = "住所が登録されていません"
+        redirect_to new_order_path
+      else
+        @address = Address.find(params[:order][:address_id])
+        @order.post_code = @address.post_code
+        @order.address = @address.address
+        @order.name = @address.name
+      end
+    elsif params[:order][:address_select] == "2"
+      if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        flash[:alert] = "住所が登録されていません"
+        redirect_to new_order_path
+      end
     end
   end
 
