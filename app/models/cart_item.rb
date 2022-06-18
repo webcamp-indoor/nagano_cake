@@ -13,6 +13,8 @@ class CartItem < ApplicationRecord
   belongs_to :customer
   belongs_to :item
   
+  validates :count, presence: true
+  
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/no_image.jpeg")
