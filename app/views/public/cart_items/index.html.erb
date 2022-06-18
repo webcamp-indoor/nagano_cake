@@ -5,7 +5,7 @@
       <!--ALL削除ボタン-->
       <div class="text-right mb-4">
         <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete,
-            data: {confim: 'カートを空にしてもよろしいでしょうか？'}, class: "btn btn-danger" %>
+            data: {confirm: "カートを空にしてもよろしいですか？"}, class: "btn btn-danger" %>
       </div>
 
       <!--カート一覧-->
@@ -34,7 +34,7 @@
               <!--数量・変更-->
               <td>
                 <%= form_with model: cart_item, url: cart_item_path(cart_item), remote: true, method: :patch do |f| %>
-                  <%= f.select :count, (1..20).to_a %>
+                  <%= f.number_field :count, step: "1" %>
                   <%= f.submit "変更", class: "btn btn-success" %>
                 <% end %>
               </td>
@@ -45,7 +45,7 @@
               <!--削除-->
               <td>
                 <%= link_to "削除する", cart_item_path(cart_item), method: :delete, remote: true,
-                    data: {confim: "#{cart_item.item.name}を削除してもよろしいですか？"}, class: "btn btn-danger" %>
+                    data: {confirm: "#{cart_item.item.name}を削除してもよろしいですか？"}, class: "btn btn-danger" %>
               </td>
             </tr>
           <% end %>
