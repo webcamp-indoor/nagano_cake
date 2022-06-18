@@ -1,16 +1,24 @@
-<div>
-  <%= image_tag @item.get_image(100,100) %>
-</div>
-
-<div>
-  <%= @item.name %> <br>
-  <%= @item.introduction %> <br>
-  ¥<%= @item.price.to_s(:delimited) %>(税込)
-  
-  <!--カート機能-->
-  <%= form_with model: @cart_item, url: cart_items_path do |f| %>
-    <%= f.hidden_field :item_id, value: @item.id %>
-    <%= f.number_field :count, step: "1", placeholder: "個数入力", min: 1 %>
-    <%= f.submit "カートに入れる", class: "btn btn-success" %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <%= render "genre", genres: @genres%>
+    </div>
+    <div class="col-4 text-center">
+      <%= image_tag @item.get_image(200,200) %>
+    </div>
+    <div class="col-6">
+      <h3 class="font-weight-bold mb-3"><%= @item.name %></h3>
+      <div class="mb-3"><%= @item.introduction %></div>
+      <!--文字数が長いときの検証が必要-->
+      <div class="mb-3">
+        <span class="h4">¥ <%= @item.tax_price.to_s(:delimited) %></span> (税込)
+      </div>
+      <!--カート機能-->
+      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.number_field :count, step: "1", placeholder: "個数入力", min: 1 %>
+        <%= f.submit "カートに入れる", class: "btn btn-success ml-4" %>
+      <% end %>
+    </div>
+  </div>
 </div>
