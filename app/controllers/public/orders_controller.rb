@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
         order_detail.price = cart_item.item.price
         order_detail.save
       end
-      # cart_items.destroy_all
+      cart_items.destroy_all
       redirect_to complete_orders_path
     end
   end

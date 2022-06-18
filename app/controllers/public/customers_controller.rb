@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
       flash[:notice] = "保存されました"
       redirect_to customers_path
     else
-      flash[:notice] = "入力内容に誤りがあります"
+      flash[:alert] = "入力内容に誤りがあります"
       render :edit
     end
   end
