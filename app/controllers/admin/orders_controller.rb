@@ -16,10 +16,6 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path(@order.id)
   end
 
-  def customer_index
-    @customer = Customer.find(params[:id])
-    @orders = @customer.orders
-  end
 
   private
 

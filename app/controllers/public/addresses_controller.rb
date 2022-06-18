@@ -25,11 +25,11 @@ class Public::AddressesController < ApplicationController
     @address = current_customer.addresses.find(params[:id])
     if @address.update(address_params)
       redirect_to addresses_path, notice: '配送先を変更しました'
-    else 
+    else
       flash.now[:error] = '変更に失敗しました'
       render :edit
     end
-      
+
   end
 
   def destroy
