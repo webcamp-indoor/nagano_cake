@@ -15,6 +15,10 @@ class Public::CartItemsController < ApplicationController
     if @old_cart_item.present?
       @cart_item.count += @old_cart_item.count
       @old_cart_item.destroy
+      if @cart_item.count > 20
+        @cart_item.count = 20
+        flash[:alert] = '1度に購入できる個数は20個までになります。'
+      end
     end
     # 保存
     if @cart_item.save
