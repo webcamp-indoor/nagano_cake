@@ -16,7 +16,11 @@ Rails.application.routes.draw do
 
     resources :addresses, only:[:index, :create, :destroy, :edit, :update]
 
-    resources :items, only:[:index, :show]
+    resources :items, only:[:index, :show] do
+      collection do
+        get "genre_search" => "items#genre_search"
+      end
+    end
 
     resources :cart_items, only:[:index, :create, :update, :destroy] do
       collection do
