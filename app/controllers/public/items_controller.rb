@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]).per(8)
+    @items = Item.page(params[:page]).per(6)
     @genres = Genre.all
   end
 
@@ -14,7 +14,7 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     params_genre = params[:id]
     items = Item.genre_search(params[:genre_id])
-    @items = items.page(params[:page]).per(8)
+    @items = items.page(params[:page]).per(6)
     @genre_name = Genre.find(params[:genre_id]).name
   end
 
