@@ -12,7 +12,7 @@ class Public::CartItemsController < ApplicationController
     # 商品がカートに存在するか確認
     @old_cart_item = CartItem.find_by(item: @cart_item.item)
     # カートに存在する？
-    if @old_cart_item.present?
+    if @old_cart_item.present? and @cart_item.valid?
       @cart_item.count += @old_cart_item.count
       @old_cart_item.destroy
     end
