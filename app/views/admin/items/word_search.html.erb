@@ -2,8 +2,6 @@
   <div class="col-12 col-md-10 offset-md-1 py-3 mb-3">
     <div class="col-10 offset-md-1">
 
-      <% if admin_signed_in? %>
-
         <!--タイトル・検索結果の件数-->
         <h2>キーワード検索結果</h2>
         <h5>検索結果は<%= @items_search.count %>件です。</h5>
@@ -43,14 +41,11 @@
               <% end %>
             </tbody>
           </table>
+          
+          <!--ページネーション-->
           <%= paginate @items_search %>
         </div>
-
-      <% else %>
-        <p><%= render "admin/shared/links" %>からログインしてください。</p>
-        <p>ログインしてください。</p>
-      <% end %>
-
+        
     </div>
   </div>
 </div>
