@@ -1,5 +1,5 @@
 class Admin::GenresController < ApplicationController
-  before_action :set_genre, only: [:edit, :update]
+  before_action :set_genre, only: [:edit, :update, :destroy]
 
   def index
     @genre = Genre.new
@@ -30,6 +30,12 @@ class Admin::GenresController < ApplicationController
       flash[:alert] = "入力してください"
       render :edit
     end
+  end
+
+  def destroy
+    @genre.destroy
+    flash[:notice] = "削除しました"
+    redirect_to admin_genres_path
   end
 
   private
