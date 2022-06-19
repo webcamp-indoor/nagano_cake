@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <%= render "genre", genres: @genres%>
+    </div>
+    <div class="col-9 offset-1">
+      <h2 class="text-center mb-5">ジャンル検索結果一覧(全<%= @items.total_count %>件) "<%= @genre_name %>"</h2>
+      <div class="d-flex flex-wrap">
+        <% @items.each do |item| %>
+          <div class="w-25">
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.get_image(100,100) %> <br>
+              <%= item.name %> <br>
+            <% end %>
+            ¥<%= item.price.to_s(:delimited) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="mt-4 mb-4 justify-content-center d-flex">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+</div>
