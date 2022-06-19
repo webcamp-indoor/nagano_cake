@@ -14,11 +14,11 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     params_genre = params[:id]
     items = Item.genre_search(params[:genre_id])
-    @items = items.page(params[:page]).per(10)
+    @items = items.page(params[:page]).per(8)
     @genre_name = Genre.find(params[:genre_id]).name
   end
-  
+
   def word_search
-    @items_search = Item.search(params[:keyword]).page(params[:page]).per(10)
+    @items_search = Item.search(params[:keyword]).page(params[:page]).per(8)
   end
 end
