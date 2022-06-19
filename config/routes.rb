@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :genres, only:[:index, :create, :edit, :update]
+    resources :genres, only:[:index, :create, :edit, :update, :destroy]
 
     resources :orders, only:[:show, :update]
 
