@@ -2,8 +2,9 @@
   <div class="col-12 col-md-10 offset-md-1 py-3 mb-3">
     <div class="col-10 offset-md-1">
       <!--タイトル・検索結果の件数-->
-      <h2>キーワード検索結果</h2>
+       <h2>キーワード検索結果</h2>
       <h5>検索結果は<%= @items_search.count %>件です。</h5>
+
       <!--検索結果-->
       <div class="d-flex flex-wrap">
         <% @items_search.each do |item| %>
@@ -16,6 +17,8 @@
           </div>
         <% end %>
       </div>
+      
+      <%= paginate @items_search %>
     </div>
   </div>
 </div>

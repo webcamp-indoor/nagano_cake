@@ -39,7 +39,8 @@ class Item < ApplicationRecord
     if search != ""
       Item.where('name LIKE(?)', "%#{search}%")
     else
-      Item.includes(:item)
+      # 空白で検索した場合
+      Item.all
     end
   end
 

@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-12 col-md-10 offset-md-1 py-3 mb-3">
+    <div class="col-10 offset-md-1">
+
+      <% if admin_signed_in? %>
+
+        <!--タイトル・検索結果の件数-->
+        <h2>キーワード検索結果</h2>
+        <h5>検索結果は<%= @items_search.count %>件です。</h5>
+
+        <!--検索結果-->
+        <div class="text-right">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜価格</th>
+                <th>ジャンル</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @items_search.each do |item|%>
+                <tr>
+                  <!--商品ID-->
+                  <td><%= item.id %></td>
+                  <!--商品名-->
+                  <td><%= link_to item.name, admin_item_path(item) %></td>
+                  <!--税抜価格-->
+                  <td><%= item.price.to_s(:delimited) %></td>
+                  <!--ジャンル-->
+                  <td><%= item.genre.name %></td>
+                  <!--ステータス-->
+                  <td>
+                    <% if item.is_active == true %>
+                      <span class="font-weight-bold text-success">販売中</span>
+                    <% else %>
+                      <span class="font-weight-bold text-muted">販売停止中</span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= paginate @items_search %>
+        </div>
+
+      <% else %>
+        <p><%= render "admin/shared/links" %>からログインしてください。</p>
+        <p>ログインしてください。</p>
+      <% end %>
+
+    </div>
+  </div>
+</div>
