@@ -19,4 +19,8 @@ class OrderDetail < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true }
   
   enum making_status: { not_startable: 0, waiting_making: 1, in_making: 2, making_complete: 3 }
+  
+  def subtotal
+    (price * 1.1).floor * count
+  end
 end

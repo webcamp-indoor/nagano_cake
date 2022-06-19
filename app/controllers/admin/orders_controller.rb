@@ -4,6 +4,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order_details = OrderDetail.where(order_id: @order.id)
+    @total = @order.total_payment - @order.postage # 商品合計
   end
 
   def update

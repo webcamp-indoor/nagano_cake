@@ -8,7 +8,8 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_items = CartItem.all
     @order = current_customer.orders.new(order_params)
-    @order.total_payment = @cart_items.inject(0) {|sum, item| sum + item.item.price*1.1*item.count }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal } # 商品合計
+    @order.total_payment = @total + @order.postage # 請求金額
     if params[:order][:address_select] == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
@@ -58,6 +59,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
+    @total = @order.total_payment - @order.postage # 商品合計
   end
 
   private
