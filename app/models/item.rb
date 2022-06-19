@@ -33,4 +33,12 @@ class Item < ApplicationRecord
   def tax_price
     (price * 1.1).floor
   end
+  
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?)', "%#{search}%")
+    else
+      Item.includes(:item)
+    end
+  end
 end

@@ -7,4 +7,8 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
+  
+  def word_search
+    @items_search = Item.search(params[:keyword])
+  end
 end
