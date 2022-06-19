@@ -34,6 +34,16 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
+  # キーワード検索
+  def self.search(search)
+    if search != ""
+      Item.where('name LIKE(?)', "%#{search}%")
+    else
+      # 空白で検索した場合
+      Item.all
+    end
+  end
+
   def self.genre_search(search_genre)
     Item.where(genre_id: search_genre)
   end

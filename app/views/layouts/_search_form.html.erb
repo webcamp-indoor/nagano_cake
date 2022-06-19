@@ -1,0 +1,15 @@
+<!--管理者の検索フォーム-->
+<% if admin_signed_in? %>
+  <%= form_with url: word_search_admin_items_path, local: true, method: :get do |f| %>
+    <%= f.text_field :keyword, placeholder: "Search", class: "bi bi-search" %>
+    <%= f.submit "検索" %>
+  <% end %>
+
+<% else %>
+<!--ユーザーの検索フォーム-->
+  <%= form_with url: word_search_items_path, local: true, method: :get do |f| %>
+    <%= f.text_field :keyword, placeholder: "Search", class: "bi bi-search" %>
+    <%= f.submit "検索" %>
+  <% end %>
+
+<% end %>
