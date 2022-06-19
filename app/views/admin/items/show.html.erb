@@ -21,7 +21,7 @@
           </tr>
           <tr>
             <th>ジャンル</th>
-            <td><%= @item.genre.name %></td>
+            <td><%= link_to @item.genre.name, genre_search_items_path(genre_id: @item.genre.id)  %></td>
           </tr>
           <tr>
             <th>
