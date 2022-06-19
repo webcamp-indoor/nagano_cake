@@ -58,3 +58,35 @@ footer {
 .footer-text {
   color: #636262;
 }
+
+//フラッシュメッセージ
+.notifications {
+  color: #fff;
+  text-align: center;  
+}
+.notice {
+  background-color:#38AEF0;
+}
+
+.alert {
+  background-color:  #F35500;
+}
+
+//新着商品
+.cards {
+  display: flex;
+
+  
+  flex-wrap: wrap;
+
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.cards__item {
+ 
+  flex-basis: 25%;
+
+  padding-left: 8px;
+  padding-right: 8px;
+}

@@ -32,13 +32,35 @@
     </div>
     <div class="col-4">
       <div class="my-2">請求情報</div>
-      <%= render "total_payment_table", order: @order %>
+      <%= render "total_payment_table", order: @order, total: @total %>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <div class="my-2">注文内容</div>
-      <%= render "cart_item_table", cart_items: @order_details %>
+      <table class="table table-bordered mb-4">
+        <thead>
+          <tr class="table-secondary">
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+            <tr>
+              <td class="align-middle">
+                <%= image_tag order_detail.item.get_image(100,100) %>
+                <%= order_detail.item.name %>
+              </td>
+              <td class="align-middle"><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
+              <td class="align-middle"><%= order_detail.count %></td>
+              <td class="align-middle"><%= (order_detail.subtotal).to_s(:delimited) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :items, only:[:index, :show] do
       collection do
         get "word_search" => "items#word_search"
+        get "genre_search" => "items#genre_search"
       end
     end
 
@@ -50,7 +51,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :items, only:[:new, :create, :index, :show, :edit, :update]
+    resources :items, only:[:new, :create, :index, :show, :edit, :update] do
+      collection do
+        get "genre_search" => "items#genre_search"
+      end
+    end
 
     resources :genres, only:[:index, :create, :edit, :update]
 

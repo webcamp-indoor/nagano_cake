@@ -1,5 +1,5 @@
 <!--キーワード検索のフォーム-->
 <%= form_with url: word_search_items_path, local: true, method: :get do |f| %>
-  <%= f.text_field :keyword, placeholder: "Search", class: "" %>
-  <% f.submit %>
+  <%= f.text_field :keyword, placeholder: "Search", class: "bi bi-search" %>
+  <%= f.submit "検索" %>
 <% end %>

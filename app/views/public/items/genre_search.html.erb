@@ -4,7 +4,7 @@
       <%= render "genre", genres: @genres%>
     </div>
     <div class="col-9 offset-1">
-      <h2 class="text-center mb-5">商品一覧(全<%= @items.total_count %>件)</h2>
+      <h2 class="text-center mb-5">ジャンル検索結果一覧(全<%= @items.total_count %>件) "<%= @genre_name %>"</h2>
       <div class="d-flex flex-wrap">
         <% @items.each do |item| %>
           <div class="w-25">

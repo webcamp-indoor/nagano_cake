@@ -8,16 +8,27 @@ class Public::OrdersController < ApplicationController
   def confirm
     @cart_items = CartItem.all
     @order = current_customer.orders.new(order_params)
-    @order.total_payment = @cart_items.inject(0) {|sum, item| sum + item.item.price*1.1*item.count }
+    @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal } # 商品合計
+    @order.total_payment = @total + @order.postage # 請求金額
     if params[:order][:address_select] == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif params[:order][:address_select] == "1"
-      @address = Address.find(params[:order][:address_id])
-      @order.post_code = @address.post_code
-      @order.address = @address.address
-      @order.name = @address.name
+      if Address.all.blank?
+        flash[:alert] = "住所が登録されていません"
+        redirect_to new_order_path
+      else
+        @address = Address.find(params[:order][:address_id])
+        @order.post_code = @address.post_code
+        @order.address = @address.address
+        @order.name = @address.name
+      end
+    elsif params[:order][:address_select] == "2"
+      if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
+        flash[:alert] = "住所が登録されていません"
+        redirect_to new_order_path
+      end
     end
   end
 
@@ -48,6 +59,7 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = OrderDetail.where(order_id: @order.id)
+    @total = @order.total_payment - @order.postage # 商品合計
   end
 
   private
