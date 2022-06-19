@@ -50,7 +50,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :items, only:[:new, :create, :index, :show, :edit, :update]
+    resources :items, only:[:new, :create, :index, :show, :edit, :update] do
+      collection do
+        get "genre_search" => "items#genre_search"
+      end
+    end
 
     resources :genres, only:[:index, :create, :edit, :update]
 

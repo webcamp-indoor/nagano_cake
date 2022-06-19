@@ -19,6 +19,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
+    @genres = Genre.all
     @items = Item.page(params[:page]).per(10)
   end
 
@@ -36,6 +37,14 @@ class Admin::ItemsController < ApplicationController
       flash[:alert] = '入力が間違っています。'
       render :edit
     end
+  end
+
+  def genre_search
+    @genres = Genre.all
+    params_genre = params[:id]
+    items = Item.genre_search(params[:genre_id])
+    @items = items.page(params[:page]).per(8)
+    @genre_name = Genre.find(params[:genre_id]).name
   end
 
   private
