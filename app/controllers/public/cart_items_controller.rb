@@ -21,7 +21,10 @@ class Public::CartItemsController < ApplicationController
       flash[:notice] = "カートに商品が追加されました"
       redirect_to cart_items_path
     else
-      render "items/show"
+      @item = Item.find(params[:cart_item][:item_id])
+      @genres = Genre.all
+      flash[:alert] = "個数が入力されていません"
+      render "public/items/show"
     end
   end
 

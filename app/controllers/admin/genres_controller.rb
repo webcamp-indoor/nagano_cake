@@ -7,13 +7,13 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
-    @genre = Genre.new #エラー後に続けて入力するために必要
-    @genres = Genre.all #エラー後に続けて入力するために必要
     genre = Genre.new(genre_params)
     if genre.save
       flash[:notice] = '新規登録しました'
       redirect_to admin_genres_path
     else
+      @genre = Genre.new #エラー後に続けて入力するために必要
+      @genres = Genre.all #エラー後に続けて入力するために必要
       flash[:alert] = '入力してください'
       render :index
     end

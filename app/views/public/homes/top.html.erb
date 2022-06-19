@@ -5,11 +5,28 @@
   会員でない方も商品の閲覧はできますが、<br>
   購入には会員登録が必要になります</p>
 </div>
-  
+
 <div class="container new-item">
-  <h2>新着商品</h2>
-  <div class="row">
-    
+  <div class="row mt-5">
+    <div class="col-2">
+      <%= render "public/items/genre", genres: @genres %>
+    </div>
+    <div class="col-9 offset-1">
+      <h2 class="text-center mb-5">新着商品</h2>
+      <div class="d-flex">
+        <% @items.each do |item| %>
+          <div class="w-25">
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.get_image(100,100) %> <br>
+              <%= item.name %> <br>
+            <% end %>
+            ¥<%= item.price.to_s(:delimited) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="text-right mt-4 mb-4">
+        <%= link_to "全ての商品をみる>>", items_path %>
+      </div>
+    </div>
   </div>
-  <div class="text-right"><%= link_to "全ての商品をみる", items_path %></div>
-</div>          
+</div>
