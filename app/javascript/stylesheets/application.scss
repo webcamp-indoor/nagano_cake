@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-
+@import 'header';
 header{
-  height:100px;
+  height: 100px;
   background-color:#dcdcdc;
 }
 
@@ -10,7 +10,8 @@ a:hover{
   text-decoration:none;
 }
 .welcome-customer {
-  margin-top: 40px;
+ ligh-height: 100px;
+ color: #636262;
 }
 .store-name {
   text-decoration: none;
@@ -45,8 +46,7 @@ a:hover{
 //about
 .main-visual_image{
   img{
-    width: 500px;
-    height: 400px;
+    width: 100%;
     object-fit: cover;
   }
 }
@@ -72,17 +72,76 @@ footer {
   background-color:  #F35500;
 }
 
-//新着商品
-.cards {
-  display: flex;
+//about
+
+.content {
+  max-width: 1000px;
+  height: 698px;
+  margin: 0px auto;
+  position: relative;
+}
+
+.text {
+  max-width: 680px;
+  background-color: #fff;
+  padding: 84px 160px 84px 84px;
+  position: absolute;
+  left: 0;
+  background-color: #F5F2EC;
+}
+.text p {
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.text .title {
+  border-bottom: solid 1px #35383a;
+  display: inline-block;
+  font-size: 1.875rem;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.text .large {
+  font-size: 1.875rem;
+}
 
 
   flex-wrap: wrap;
 
-  margin-left: -8px;
-  margin-right: -8px;
+.text .btn {
+  display: inline-block;
+  border: solid 1px #35383a;
+  border-radius: 30px;
+  padding: 16px 50px;
+  transition: all 0.3s ease;
+}
+.text .btn:hover {
+  background-color: #efeded;
 }
 
+
+
+
+@media screen and (max-width: 1000px) {
+
+  .content {
+    height: auto;
+    position: static;
+    margin: 0;
+  }
+  .text {
+    max-width: 100%;
+    padding: 60px 20px;
+    position: static;
+  }
+
+  .main-visual_image{
+    img{
+      max-width: 100%;
+      position: static;
+    }
+  }
+}
 .cards__item {
 
   flex-basis: 25%;
@@ -105,5 +164,5 @@ footer {
 
 /*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  border-radius: 50%;    /*角を丸くする*/
-}
+  border-radius: 50%;
+}/*角を丸くする*/
