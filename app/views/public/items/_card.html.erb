@@ -1,8 +1,8 @@
 <div class="d-flex flex-wrap justify-content-around">
   <% items.each do |item| %>
-    <%= link_to item_path(item), class:"card mb-3", style:"padding: 0; height:350px; width: 200px" do %>
+    <%= link_to item_path(item), class:"card mb-3 shadow", style:"padding: 0; height:350px; width: 200px" do %>
       <%= image_tag item.get_image(500,500), class:"card-img-top", alt:"Card image cap", style:"height:150px; width:auto; object-fit: cover" %>
-      <div class="card-body", style="color:black">
+      <div class="card-body", style="color:black; background-color:#e8dfd9">
         <h5 class="card-title"><%= item.name %></h5>
         <p class="card-text"><%= item.introduction %></p>
         <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
