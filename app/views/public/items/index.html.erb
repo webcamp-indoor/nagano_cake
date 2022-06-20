@@ -4,19 +4,8 @@
       <%= render "genre", genres: @genres%>
     </div>
     <div class="col-10">
-      <h2 class="text-center mb-5">商品一覧(全<%= @items.total_count %>件)</h2>
-      <div class="d-flex flex-wrap justify-content-center">
-        <% @items.each do |item| %>
-          <%= link_to item_path(item), class:"card col-3 mr-1 ml-1 mb-3", style:"padding: 0; height:400px" do %>
-            <%= image_tag item.get_image(500,500), class:"card-img-top", alt:"Card image cap", style:"height:150px; width:auto; object-fit: cover" %>
-            <div class="card-body", style="color:black">
-              <h5 class="card-title"><%= item.name %></h5>
-              <p class="card-text"><%= item.introduction %></p>
-              <p class="card-text">¥<%= item.price.to_s(:delimited) %></p>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+      <h2 class="text-center mb-5">商品一覧 (全<%= @items.total_count %> 件)</h2>
+      <%= render "public/items/card", items: @items %>
       <div class="mt-4 mb-4 justify-content-center d-flex">
         <%= paginate @items %>
       </div>
