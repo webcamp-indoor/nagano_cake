@@ -105,7 +105,6 @@ footer {
   font-size: 1.875rem;
 }
 
-
 .text .btn {
   display: inline-block;
   border: solid 1px #35383a;
@@ -140,3 +139,27 @@ footer {
     }
   }
 }
+.cards__item {
+
+  flex-basis: 25%;
+
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #ff002b;     /*背景の色を変える*/
+  border-radius: 50%;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 50%;
+}/*角を丸くする*/
