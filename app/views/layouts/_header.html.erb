@@ -10,8 +10,8 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
        <% if customer_signed_in? %>
-        <li class="nav-item active">
-         <span class="welcome-customer"> <%= "ようこそ、" + current_customer.last_name + current_customer.first_name + "さん！" %></span>
+        <li class="nav-item">
+         <span class="welcome-customer"> ようこそ<br><%= current_customer.last_name + current_customer.first_name + "さん！" %></span>
         </li>
         <li class="nav-item">
           <%= link_to  customers_path do%>
@@ -68,7 +68,7 @@
               <i class="fas fa-smile fa-2x"></i>
               <p class="text-nowrap mb-0">about</p>
             </div>
-          <% end %> 
+          <% end %>
          </li>
          <li class="nav-item">
           <%= link_to  items_path  do %>
@@ -77,7 +77,7 @@
               <p class="text-nowrap mb-0">商品一覧</p>
             </div>
           <% end %>
-          
+
          </li>
          <li class="nav-item">
           <%= link_to new_customer_registration_path do %>
@@ -85,7 +85,7 @@
               <i class="fas fa-user-plus fa-2x"></i>
               <p class="text-nowrap mb-0">新規登録</p>
             </div>
-          <% end %>  
+          <% end %>
          </li>
          <li class="nav-item">
           <%= link_to new_customer_session_path do%>
@@ -98,12 +98,11 @@
         <% end %>
       </ul>
     </div>
-
     <%= render 'layouts/search_form'%>
     <div class="openbtn"><span></span><span></span><span></span></div>
     <div id="g-nav">
       <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
-      
+
       <ul>
        <% if customer_signed_in? %>
         <li class="nav-item active">
@@ -151,7 +150,7 @@
            <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-light mx-3 my-1'%>
          </li>
         <% end %>
-      
+
       </ul>
       </div>
     </div>
