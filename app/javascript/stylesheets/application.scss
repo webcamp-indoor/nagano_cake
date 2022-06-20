@@ -83,7 +83,6 @@ footer {
 
 .text {
   max-width: 680px;
-  background-color: #fff;
   padding: 84px 160px 84px 84px;
   position: absolute;
   left: 0;
@@ -163,3 +162,7 @@ footer {
 .pagination>li>a:hover {
   border-radius: 50%;
 }/*角を丸くする*/
+
+.card:hover {
+  background-color: black;
+}
