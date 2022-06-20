@@ -83,7 +83,6 @@ footer {
 
 .text {
   max-width: 680px;
-  background-color: #fff;
   padding: 84px 160px 84px 84px;
   position: absolute;
   left: 0;
@@ -104,7 +103,6 @@ footer {
 .text .large {
   font-size: 1.875rem;
 }
-
 
 .text .btn {
   display: inline-block;
@@ -139,4 +137,32 @@ footer {
       position: static;
     }
   }
+}
+.cards__item {
+
+  flex-basis: 25%;
+
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #ff002b;     /*背景の色を変える*/
+  border-radius: 50%;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 50%;
+}/*角を丸くする*/
+
+.card:hover {
+  background-color: black;
 }
