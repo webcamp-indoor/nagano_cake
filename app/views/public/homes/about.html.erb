@@ -1,20 +1,58 @@
 
+<div class="row">
+  <div class="col p-0">
+    <div class="main-visual_image">
+      <%=image_tag "cake.jpg"%>
+    </div>
+  </div>
+  <div class="col p-0" style="background-color: #F5F2EC;">
+    <div class="content">
+      <div class="text">
+        <h2 class="title">ABOUT Naganocake</h2>
+        <p class="large">
+          Sweets for your day<br>
+          Sweet things in our day
 
-<div class="container">
-  <div class="row">
-    <div class="col-12 col-md-10 offset-md-1 py-4 mb-3">
-      
-        <h1 class="text-center mb-5">ABOUT</h3>
-        <h5 class="text-center my-5 shop_detail">
+        </p>
+        <p>
           NaganoCAKEは全国発送可能なケーキ屋さんです。<br>
           お子様からお年寄りの方までお召し上がりいただけるよう、<br>
           様々なバリエーションをご用意しております。<br>
           また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br>
           ぜひご注文ください。
         </p>
-        <div class="main-visual_image">
-          <%=image_tag "cake.jpg"%>
-        </div>
+        <%= link_to "詳細はこちら" , items_path ,class: "btn" %>
+      </div>
+
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col p-0" style="background-color: #F5F2EC;">
+    <div class="content">
+      <div class="text">
+        <h2 class="title">Jhon Miller</h2>
+        <p class="large">
+          Nothing in the world is on my right<br>
+          Because I'm the only one who can embody the sweets I imagined
+
+        </p>
+        <p>
+          フランス生まれ。
+          三つ星レストランのパティシエとして活躍。王室御用達のスイーツ店なども手掛ける。
+          なかでもチョコレートを使ったケーキは数々の賞を受賞し、
+          世界のセレブ顧客を虜にしている。
+        </p>
+        <%= link_to "詳細はこちら" , items_path ,class: "btn" %>
+      </div>
+
+    </div>
+  </div>
+  <div class="col p-0">
+    <div class="main-visual_image">
+      <%=image_tag "chef.jpg"%>
+    </div>
+  </div>
+</div>
+
