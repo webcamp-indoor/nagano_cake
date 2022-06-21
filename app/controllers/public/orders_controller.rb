@@ -44,6 +44,7 @@ class Public::OrdersController < ApplicationController
         order_detail.price = cart_item.item.price
         order_detail.save
       end
+      current_customer.addresses.create(address: order.address, name: order.name, post_code: order.post_code)
       cart_items.destroy_all
       redirect_to complete_orders_path
     end

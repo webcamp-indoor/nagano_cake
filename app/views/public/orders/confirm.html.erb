@@ -33,12 +33,12 @@
     </div>
   </div>
   <div class="mb-4">
-    <span>支払方法</span>
+    <span>支払方法：</span>
     <%= @order.payment_method_i18n %>
   </div>
   <div class="mb-4">
-    お届け先
-    <%= "〒" + @order.post_code + " " + @order.address + " " + @order.name %>
+    お届け先：
+    <%= "〒" + @order.post_code + " " + @order.address + " " + @order.name %> 様
   </div>
   <div class="text-center mb-5">
     <%= form_with model:@order, url: orders_path, method: :post do |f| %>
