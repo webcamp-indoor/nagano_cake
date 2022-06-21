@@ -33,7 +33,8 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
-
+  has_many :reviews, dependent: :destroy
+  
   validates :address, presence: true
   validates :first_name, presence: true
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
