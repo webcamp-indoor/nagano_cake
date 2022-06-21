@@ -11,10 +11,10 @@ class Public::ReviewsController < ApplicationController
   
   
   def destroy
-    @item = Item.find(params[:item_id])
-    review = @item.reviews.find(params[:id])
+    @item = Item.find(params[:id])
+    review =@item.reviews.find(params[:item_id])
     review.destroy
-    redirect_to item_path(item)
+    redirect_to item_path(@item)
   end
   
   
