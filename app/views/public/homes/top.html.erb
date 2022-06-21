@@ -3,7 +3,7 @@
   <p class="top-visual_content">ようこそ、NaganoCAKEへ！<br>
   このサイトは、ケーキ販売のECサイトになります。<br>
   会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります</p>
+  購入には会員登録が必要になります。</p>
 </div>
 
 <div class="container new-item">
@@ -15,7 +15,7 @@
       <h2 class="text-center mb-5">新着商品</h2>
       <%= render "public/items/card", items: @items %>
       <div class="text-right mt-4 mb-4">
-        <%= link_to "全ての商品をみる>>", items_path %>
+        <%= link_to "全ての商品をみる>>", items_path, style:"color:blue" %>
       </div>
     </div>
   </div>

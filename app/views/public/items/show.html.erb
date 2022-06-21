@@ -9,7 +9,7 @@
     <div class="col-3">
       <h3 class="font-weight-bold mb-3"><%= @item.name %></h3>
       <div class="mb-3"><%= @item.introduction %></div>
-      <div class="mb-3">ジャンル：<%= link_to @item.genre.name, genre_search_items_path(genre_id: @item.genre.id)  %></div>
+      <div class="mb-3">ジャンル：<%= link_to @item.genre.name, genre_search_items_path(genre_id: @item.genre.id), style:"color:blue"%></div>
       <!--文字数が長いときの検証が必要-->
     </div>
     <div class="col-2", style="border:solid; border-radius:5%; height:200px ">
