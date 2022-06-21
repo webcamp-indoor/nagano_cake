@@ -90,3 +90,26 @@ footer {
   padding-left: 8px;
   padding-right: 8px;
 }
+
+// cart_items/indexで使用css ここから
+.cart_box {
+  background: #fff;
+  border: 1px #ccc solid;
+  box-shadow: 0 2px 3px 0 #ddd;
+  font-size: 100%;
+  padding: 20px;
+}
+
+.table .item_table {
+	vertical-align: middle;
+	padding: 0 0 4px 0;
+}
+
+.price_box {
+  background: #fff;
+  border: 1px #ccc solid;
+  box-shadow: 0 2px 3px 0 #ddd;
+  font-size: 100%;
+  padding: 20px 20px 80px 20px;
+}
+// cart_items/indexで使用css ここまで
