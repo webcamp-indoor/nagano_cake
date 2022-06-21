@@ -21,13 +21,16 @@
                 <%= link_to order.customer.last_name + order.customer.first_name, admin_customers_path %>
               </td>
               <td>
-                <%= order.order_details.count %>
+                <%= order.order_details.inject(0) {|sum, hash| sum + hash[:count]}  %>
               </td>
               <td><%= order.status_i18n %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
+      <div class="mt-4 mb-4 justify-content-center d-flex">
+        <%= paginate @orders %>
+      </div>
     </div>
   </div>
 </div>

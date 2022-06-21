@@ -6,30 +6,48 @@
       <%= link_to "NaganoCAKE", root_path, class: "store-name"%>
     <% end %>
 
-    <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
        <% if customer_signed_in? %>
-        <li class="nav-item active">
-         <span class="welcome-customer mx-3 my-1"> <%= "ようこそ、" + current_customer.last_name + current_customer.first_name + "さん！" %></span>
+        <li class="nav-item">
+         <span class="welcome-customer"> ようこそ<br><%= current_customer.last_name + current_customer.first_name + "さん！" %></span>
         </li>
         <li class="nav-item">
-          <%= link_to "マイページ", customers_path, class: "btn btn-dark mx-3 my-1"%>
+          <%= link_to  customers_path do%>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-user fa-2x"></i>
+              <p class="text-nowrap mb-0">マイページ</p>
+            </div>
+          <% end %>
         </li>
         <li class="nav-item ">
-          <%= link_to "商品一覧", items_path,class: 'btn btn-dark mx-3 my-1'%>
+          <%= link_to  items_path do %>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-birthday-cake fa-2x"></i>
+              <p class="text-nowrap mb-0">商品一覧</p>
+            </div>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "カート",cart_items_path,class: 'btn btn-dark mx-3 my-1'%>
+          <%= link_to cart_items_path do %>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-shopping-cart fa-2x"></i>
+              <p class="text-nowrap mb-0">カート</p>
+            </div>
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-dark mx-3 my-1'%>
+          <%= link_to  destroy_customer_session_path, method: :delete  do %>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-sign-out-alt  fa-2x"></i>
+              <p class="text-nowrap mb-0">ログアウト</p>
+            </div>
+          <% end %>
         </li>
        <% elsif admin_signed_in? %>
          <li class="nav-item">
-           <%= link_to "商品一覧", admin_items_path,class: 'btn btn-dark mx-3 my-1' %>
+           <%= link_to "商品一覧", admin_items_path,class: 'btn btn-dark mx-3 my-1 ' %>
          </li>
          <li class="nav-item">
            <%= link_to "会員一覧", admin_customers_path, class:'btn btn-dark mx-3 my-1'%>
@@ -45,22 +63,114 @@
          </li>
        <% else %>
        <li class="nav-item">
-           <%= link_to "about", about_path,class: 'btn btn-dark mx-3 my-1' %>
+          <%= link_to  about_path do %>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-smile fa-2x"></i>
+              <p class="text-nowrap mb-0">about</p>
+            </div>
+          <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "商品一覧", items_path,class: 'btn btn-dark mx-3 my-1' %>
+          <%= link_to  items_path  do %>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-birthday-cake fa-2x"></i>
+              <p class="text-nowrap mb-0">商品一覧</p>
+            </div>
+          <% end %>
+
          </li>
          <li class="nav-item">
-           <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-dark mx-3 my-1'%>
+          <%= link_to new_customer_registration_path do %>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-user-plus fa-2x"></i>
+              <p class="text-nowrap mb-0">新規登録</p>
+            </div>
+          <% end %>
          </li>
          <li class="nav-item">
-           <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-dark mx-3 my-1'%>
+          <%= link_to new_customer_session_path do%>
+            <div class="flex-column mx-3 text-center">
+              <i class="fas fa-sign-in-alt  fa-2x"></i>
+              <p class="text-nowrap mb-0">ログイン</p>
+            </div>
+          <% end %>
          </li>
         <% end %>
       </ul>
     </div>
-    
     <%= render 'layouts/search_form'%>
+    <div class="openbtn"><span></span><span></span><span></span></div>
+    <div id="g-nav">
+      <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
 
+      <ul>
+       <% if customer_signed_in? %>
+        <li class="nav-item active">
+         <span class="welcome-customer mx-3 my-1"> <%= "ようこそ、" + current_customer.last_name + current_customer.first_name + "さん！" %></span>
+        </li>
+        <li class="nav-item">
+          <%= link_to "マイページ", customers_path, class: "btn btn-light mx-3 my-1"%>
+        </li>
+        <li class="nav-item ">
+          <%= link_to "商品一覧", items_path,class: 'btn btn-light mx-3 my-1'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "カート",cart_items_path,class: 'btn btn-light mx-3 my-1'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-light mx-3 my-1'%>
+        </li>
+       <% elsif admin_signed_in? %>
+         <li class="nav-item">
+           <%= link_to "商品一覧", admin_items_path,class: 'btn btn-light mx-3 my-1' %>
+         </li>
+         <li class="nav-item">
+           <%= link_to "会員一覧", admin_customers_path, class:'btn btn-light mx-3 my-1'%>
+         </li>
+         <li class="nav-item">
+           <%= link_to "注文履歴一覧", admin_path, class:'btn btn-lightk mx-3 my-1'%>
+         </li>
+         <li class="nav-item">
+           <%= link_to "ジャンル一覧", admin_genres_path,class: 'btn btn-light mx-3 my-1'%>
+         </li>
+         <li class="nav-item">
+           <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'btn btn-light mx-3 my-1'%>
+         </li>
+       <% else %>
+       <li class="nav-item">
+           <%= link_to "about", about_path,class: 'btn btn-light mx-3 my-1' %>
+         </li>
+         <li class="nav-item">
+           <%= link_to "商品一覧", items_path,class: 'btn btn-light mx-3 my-1' %>
+         </li>
+         <li class="nav-item">
+           <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-light mx-3 my-1'%>
+         </li>
+         <li class="nav-item">
+           <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-light mx-3 my-1'%>
+         </li>
+        <% end %>
+
+      </ul>
+      </div>
+    </div>
+
+
+    <script>
+      $(".openbtn").click(function () {//ボタンがクリックされたら
+
+        $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
+        $("#g-nav").toggleClass('panelactive');//ナビゲーションにpanelactiveクラスを付与
+
+      });
+
+      $("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+
+        $(".openbtn").removeClass('active');//ボタンの activeクラスを除去し
+        $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
+
+      });
+
+    </script>
  </nav>
 </header>

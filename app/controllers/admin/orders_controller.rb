@@ -14,6 +14,7 @@ class Admin::OrdersController < ApplicationController
         order_detail.update(making_status: "waiting_making")
       end
     end
+    flash[:notice] = "注文ステータスを更新しました"
     redirect_to admin_order_path(@order.id)
   end
 

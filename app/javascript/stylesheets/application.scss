@@ -1,8 +1,8 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-
+@import 'header';
 header{
-  height:100px;
+  height: 100px;
   background-color:#dcdcdc;
 }
 
@@ -10,7 +10,8 @@ a:hover{
   text-decoration:none;
 }
 .welcome-customer {
-  margin-top: 40px;
+ ligh-height: 100px;
+ color: #636262;
 }
 .store-name {
   text-decoration: none;
@@ -25,7 +26,7 @@ a:hover{
   &_content{
     position: absolute;
     color: #636262;
-    font-weight: bold; 
+    font-weight: bold;
     font-size: 2em;
     top: 50%;
     left: 50%;
@@ -45,8 +46,7 @@ a:hover{
 //about
 .main-visual_image{
   img{
-    width: 500px;
-    height: 400px;
+    width: 100%;
     object-fit: cover;
   }
 }
@@ -62,7 +62,7 @@ footer {
 //フラッシュメッセージ
 .notifications {
   color: #fff;
-  text-align: center;  
+  text-align: center;
 }
 .notice {
   background-color:#38AEF0;
@@ -72,23 +72,99 @@ footer {
   background-color:  #F35500;
 }
 
-//新着商品
-.cards {
-  display: flex;
+//about
 
-  
-  flex-wrap: wrap;
-
-  margin-left: -8px;
-  margin-right: -8px;
+.content {
+  max-width: 1000px;
+  height: 698px;
+  margin: 0px auto;
+  position: relative;
 }
 
+.text {
+  max-width: 680px;
+  padding: 84px 160px 84px 84px;
+  position: absolute;
+  left: 0;
+  background-color: #F5F2EC;
+}
+.text p {
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.text .title {
+  border-bottom: solid 1px #35383a;
+  display: inline-block;
+  font-size: 1.875rem;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.text .large {
+  font-size: 1.875rem;
+}
+
+.text .btn {
+  display: inline-block;
+  border: solid 1px #35383a;
+  border-radius: 30px;
+  padding: 16px 50px;
+  transition: all 0.3s ease;
+}
+.text .btn:hover {
+  background-color: #efeded;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+
+  .content {
+    height: auto;
+    position: static;
+    margin: 0;
+  }
+  .text {
+    max-width: 100%;
+    padding: 60px 20px;
+    position: static;
+  }
+
+  .main-visual_image{
+    img{
+      max-width: 100%;
+      position: static;
+    }
+  }
+}
 .cards__item {
- 
+
   flex-basis: 25%;
 
   padding-left: 8px;
   padding-right: 8px;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #ff002b;     /*背景の色を変える*/
+  border-radius: 50%;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 50%;
+}/*角を丸くする*/
+
+.card:hover {
+  background-color: black;
 }
 
 // cart_items/indexで使用css ここから
