@@ -10,11 +10,12 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal } # 商品合計
     @order.total_payment = @total + @order.postage # 請求金額
-    if params[:order][:address_select] == "0"
+    @address_select = params[:order][:address_select]
+    if @address_select == "0"
       @order.post_code = current_customer.post_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-    elsif params[:order][:address_select] == "1"
+    elsif @address_select == "1"
       if Address.all.blank?
         flash[:alert] = "住所が登録されていません"
         redirect_to new_order_path
@@ -24,7 +25,7 @@ class Public::OrdersController < ApplicationController
         @order.address = @address.address
         @order.name = @address.name
       end
-    elsif params[:order][:address_select] == "2"
+    elsif @address_select == "2"
       if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
         flash[:alert] = "住所が登録されていません"
         redirect_to new_order_path
@@ -44,7 +45,9 @@ class Public::OrdersController < ApplicationController
         order_detail.price = cart_item.item.price
         order_detail.save
       end
-      current_customer.addresses.create(address: order.address, name: order.name, post_code: order.post_code)
+      if params[:address_select] == "2"
+        current_customer.addresses.create(address: order.address, name: order.name, post_code: order.post_code)
+      end
       cart_items.destroy_all
       redirect_to complete_orders_path
     end
