@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row">
     <div class="col-12">
-      <h2 class="text-center mb-5"><%= @customer.last_name + @customer.first_name %>さんの注文履歴</h2>
+      <h2 class="text-center mb-4"><%= @customer.last_name + @customer.first_name %>さんの注文履歴</h2>
     </div>
-    <div class="col-12">
+    <div class="col-6 offset-3">
       <table class="table">
         <thead class="table-secondary">
           <tr>
@@ -15,16 +15,18 @@
         <tbody>
           <% @orders.each do |order|%>
             <tr>
-              <td><%= link_to order.created_at.strftime('%Y/%m/%d  %H:%M:%S'), admin_order_path(order) %></td>
+              <td><%= link_to order.created_at.strftime('%Y/%m/%d  %H:%M:%S'), admin_order_path(order), class:"text-primary" %></td>
               <td>
                 <%= order.order_details.count %>
               </td>
               <td><%= order.status_i18n %></td>
             </tr>
           <% end %>
-          <%= paginate @orders %>
         </tbody>
       </table>
+      <div class="mt-4 mb-4 justify-content-center d-flex">
+        <%= paginate @orders %>
+      </div>
     </div>
   </div>
 </div>

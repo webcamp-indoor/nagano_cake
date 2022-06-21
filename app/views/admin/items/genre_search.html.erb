@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-2">
       <%= render "admin/items/genre", genres: @genres%>
@@ -6,7 +6,7 @@
     <div class="col-10">
       <h2 class="text-center">ジャンル検索結果商品一覧 "<%= @genre_name %>"</h2>
       <div class="text-right">
-        <%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-primary mb-4" %>
+        <%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-danger rounded-pill mb-4" %>
           <table class="table">
             <thead>
               <tr>
@@ -21,7 +21,7 @@
               <% @items.each do |item|%>
                 <tr>
                   <td><%= item.id %></td>
-                  <td><%= link_to item.name, admin_item_path(item) %></td>
+                  <td><%= link_to item.name, admin_item_path(item), class:"text-primary" %></td>
                   <td><%= item.price.to_s(:delimited) %></td>
                   <td><%= item.genre.name %></td>
                   <td>
