@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-6 offset-3 text-center">
-      <h2>ログイン</h2>
-      <h4>会員の方はこちらからログインして下さい</h4>
+      <h2 class="font-weight-bold">ログイン</h2>
+      <h4 class="font-weight-bold">会員の方はこちらからログインして下さい</h4>
       <%= form_with model: @customer, url: customer_session_path do |f| %>
         <div class="form-group text-left mt-3 col-8 offset-2">
           <%= f.label :email, "メールアドレス" %> <br>
@@ -20,7 +20,7 @@
   </div>
   <div class="row text-center mt-4">
     <div class="col-12 col-md-10 offset-md-1 py-4">
-      <h4>会員登録がお済みでない方</h4>
+      <h4 class="font-weight-bold">会員登録がお済みでない方</h4>
       <p><%= render "public/shared/links" %>から新規登録を行ってください。</p>
     </div>
   </div>
