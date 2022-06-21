@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :addresses, only:[:index, :create, :destroy, :edit, :update]
 
     resources :items, only:[:index, :show] do
+      resources :reviews, only: [:create, :destroy] 
       collection do
         get "word_search" => "items#word_search"
         get "genre_search" => "items#genre_search"
