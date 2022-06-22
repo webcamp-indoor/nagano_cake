@@ -37,7 +37,7 @@
 ## バックエンド
  * ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux]
  * Rails 6.1.6
- 
+
 ## フロントエンド
 * HTML
 * CSS(SCSS)
@@ -52,6 +52,7 @@
 * gem 'pry-rails'
 * gem 'annotate'
 * gem "enum_help"
+* gem "jquery-rails"
 
 
 # その他
