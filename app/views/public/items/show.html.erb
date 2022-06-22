@@ -54,7 +54,7 @@
             <p class="h3"><%= review.content %></p>
             <label><%= review&.created_at&.strftime('%Y/%m/%d') %></label>
             <% if review.customer == current_customer %>
-              <%= link_to "削除", item_review_path(review.item,review), method: :delete %>
+              <%= link_to "削除", item_review_path(review.item,review), method: :delete, class:"ml-3" %>
             <% end %>
           </div>
         <% end %>
@@ -62,16 +62,16 @@
 
       <% if customer_signed_in? %>
         <div class="row">
-          <div class="offset-md-5 col-md-5">
+          <div class="offset-md-5 col-md-6">
             <%= form_with model: @review, url: item_reviews_path(@item) do |f| %>
               <!--星評価-->
-              <div class="form-group row" id="evaluate_stars">
+              <div class="form-group" id="evaluate_stars">
                 <%= f.label :rate,'総合評価', class:'col-md-5 col-form-label' %>
                 <%= f.hidden_field :rate, id: :review_star %>
               </div>
               <!--レビュー-->
               <%= f.text_area :content, class: "form-control ml-2" %>
-              <%= f.submit "レビューを追加" , class:"btn btn-primary ml-2 my-3"%>
+              <div class="offset-6"><%= f.submit "レビューを追加" , class:"btn btn-primary ml-2 my-3"%></div>
             <% end %>
           </div>
         </div>

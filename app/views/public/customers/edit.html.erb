@@ -2,7 +2,7 @@
   <h2 class="my-5 text-center">会員情報編集</h2>
   <div class="row">
     <%= form_with model: @customer,url: customers_path, method: :patch, local: true do |f|%>
-      <div class="col-xs-12">
+      <div class="col-10 offset-8">
         <div class="form-group row">
           <%= f.label :"氏名",class:"col-4"%>
           <%= f.text_field :last_name, class:"col-3"%>
@@ -35,9 +35,9 @@
           <%= f.email_field :email, class:"col-8"%>
         </div>
 
-        <div class="mb-3">
-          <%= f.submit "編集内容を保存する",class:"btn btn-success mr-5"%>
-          <%= link_to "退会する", confirm_customers_path ,class:"btn btn-danger ml-5"%>
+        <div class="mb-3 text-center">
+          <%= f.submit "編集内容を保存する",class:"btn btn-success rounded-pill mr-5"%>
+          <%= link_to "退会する", confirm_customers_path ,class:"btn btn-danger rounded-pill ml-5"%>
         </div>
       </div>
       <% end %>
