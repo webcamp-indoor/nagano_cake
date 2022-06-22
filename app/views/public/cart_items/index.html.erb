@@ -1,5 +1,5 @@
 <div class="container">
-  
+
   <% if @cart_items.present? %>
     <div class="row">
       <div class="col-md-8">
@@ -20,7 +20,7 @@
       <div class="col-7 col-md-8">
         <% @cart_items.each do |cart_item| %>
           <div class="col-12 offset-md-1 py-3 mb-1">
-          
+
             <div class="cart_box">
               <table class="table table-borderless">
                 <tr class="item_table">
@@ -37,7 +37,7 @@
                   <td class="item_table">
                     <div class="spinner_area">
                       <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
-                        数量: 
+                        数量:
                         <%= f.number_field :count, step: "1", min: 1 %>
                         <%= f.submit "変更", class: "btn btn-outline-success btn-sm rounded-pill" %>
                       <% end %>
@@ -54,20 +54,20 @@
                       <i class="fas fa-trash-alt fa-2x" style="color:gray"></i>
                     <% end %>
                   </td>
-                </tr> 
+                </tr>
               </table>
             </div>
 
           </div>
         <% end %>
-    
+
         <!--買い物を続ける-->
         <div class="col-12 offset-md-1 py-3 mb-1">
           <%= link_to "買い物を続ける", root_path,
               class: "btn btn-outline-primary rounded-pill" %>
         </div>
       </div>
-  
+
       <div class="col-md-4">
         <div class="col-12 offset-md-1 py-3 mb-1">
           <div class="price_box">
@@ -92,5 +92,5 @@
       </div>
     </div>
   <% end %>
-  
+
 </div>
