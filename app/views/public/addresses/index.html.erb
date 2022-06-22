@@ -1,22 +1,23 @@
 <div class="container mt-5">
  <h2 class="text-center">配送先登録/一覧</h2>
- <div class="row mt-3">
-  <%= form_with model: @address, url: addresses_path, method: :post, local: true do |f| %>
+ <div class="row mt-3 offset-4">
+  <%= form_with model: @address, url: addresses_path, method: :post, local: false do |f| %>
     <table class="mx-auto">
      <tr>
        <td><%= f.label :"郵便番号(ハイフンなし)"%></td>
-       <td><%= f.text_field :post_code, class: "form-control" %></td>
+       <td><%= f.text_field :post_code, class: "form-control", id: "post_code" %></td>
      </tr>
      <tr>
        <td><%= f.label :"住所"%></td>
-       <td><%= f.text_field :address, class: "form-control" %></td>
+       <td><%= f.text_field :address, class: "form-control", id: "address" %></td>
      </tr>
      <tr>
       <td> <%= f.label :"宛名" %></td>
-      <td><%= f.text_field :name, class: "form-control" %></td>
+      <td><%= f.text_field :name, class: "form-control", id: "name" %></td>
      </tr>
       <tr>
-        <td><%= f.submit '登録する' ,class: "btn btn-success mt-3 mb-5 d-block mx-auto" %></td>
+        <td></td>
+        <td><%= f.submit '登録する' ,class: "btn btn-success rounded-pill mt-3 mb-5 d-block mx-auto" %></td>
       </tr>
    </table>
   <% end %>
@@ -34,24 +35,8 @@
         </tr>
       </thead>
 
-      <tbody>
-        <% @addresses.each do |address| %>
-          <tr>
-            <td>
-              <%= address.post_code %>
-            </td>
-            <td class="text-left">
-              <%= address.address %>
-            </td>
-            <td class="text-left">
-              <%= address.name %>
-            </td>
-            <td align="center">
-              <%= link_to "編集する", edit_address_path(address), class: "btn-sm btn-primary" %>
-              <%= link_to "削除する", address_path(address) , method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %></td>
-            </td>
-          </tr>
-        <% end %>
+      <tbody id="address_index">
+        <%= render "public/addresses/index", addresses: @addresses%>
       </tbody>
     </table>
   </div>
