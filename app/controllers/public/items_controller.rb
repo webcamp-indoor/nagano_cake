@@ -9,7 +9,7 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
     
-    @reviews = @item.reviews
+    @reviews = @item.reviews_with_id
     @review = @reviews.new
   end
 

@@ -51,7 +51,7 @@
             <p class="h3"><%= review.content %></p>
             <label><%= review&.created_at&.strftime('%Y/%m/%d') %></label>
             <% if review.customer == current_customer %>
-              <%= link_to "削除", item_review_path(review), method: :delete %>
+              <%= link_to "削除", item_review_path(review.item,review), method: :delete %>
             <% end %>
           </div>
         <% end %>
