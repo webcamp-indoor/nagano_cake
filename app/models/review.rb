@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  content     :text
+#  evaluation  :float
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  customer_id :integer
@@ -24,4 +25,5 @@ class Review < ApplicationRecord
   belongs_to :customer
   
   validates :content, presence: true
+  scope :reviews_with_id, -> { where.not(item_id: nil) }
 end

@@ -22,7 +22,7 @@
           <%= form_with model: @cart_item, url: cart_items_path do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <div class="mb-3">
-              <%= f.number_field :count, step: "1", placeholder: "個数入力", min: 1, style:"width:100px"  %>
+              <%= f.number_field :count, step: "1", value: 1, min: 1, style:"width:100px"  %>
             </div>
             <div class="d-flex justify-content-center">
               <%= f.submit "カートに入れる", class: "btn btn-warning rounded-pill" %>
@@ -48,10 +48,13 @@
       <div class="row">
         <% @reviews.each do |review| %>
           <div class="offset-md-5 col-md-5">
+            <!--星評価の表示-->
+            <p class="review-evaluation" data-score="<%= review.evaluation %>"></p>
+            <!--レビュー-->
             <p class="h3"><%= review.content %></p>
             <label><%= review&.created_at&.strftime('%Y/%m/%d') %></label>
             <% if review.customer == current_customer %>
-              <%= link_to "削除", item_review_path(review), method: :delete %>
+              <%= link_to "削除", item_review_path(review.item,review), method: :delete %>
             <% end %>
           </div>
         <% end %>
@@ -61,6 +64,12 @@
         <div class="row">
           <div class="offset-md-5 col-md-5">
             <%= form_with model: @review, url: item_reviews_path(@item) do |f| %>
+              <!--星評価-->
+              <div class="form-group row" id="evaluate_stars">
+                <%= f.label :rate,'総合評価', class:'col-md-5 col-form-label' %>
+                <%= f.hidden_field :rate, id: :review_star %>
+              </div>
+              <!--レビュー-->
               <%= f.text_area :content, class: "form-control ml-2" %>
               <%= f.submit "レビューを追加" , class:"btn btn-primary ml-2 my-3"%>
             <% end %>
@@ -69,3 +78,26 @@
       <% end %>
     </div>
 </div>
+
+<!--星評価javascript/投稿する-->
+<script>
+  $('#evaluate_stars').raty({
+    size     : 10,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[evaluation]',
+    half: true,
+  });
+</script>
+
+<!--星評価javascript/投稿を表示-->
+<script>
+  $('.review-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
