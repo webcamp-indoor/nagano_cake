@@ -16,7 +16,7 @@ class Admin::GenresController < ApplicationController
       @genre = Genre.new #エラー後に続けて入力するために必要
       @genres = Genre.all #エラー後に続けて入力するために必要
       flash[:alert] = '入力してください'
-      render :index
+      # render :index
     end
   end
 
