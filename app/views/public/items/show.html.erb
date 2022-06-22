@@ -22,7 +22,7 @@
           <%= form_with model: @cart_item, url: cart_items_path do |f| %>
             <%= f.hidden_field :item_id, value: @item.id %>
             <div class="mb-3">
-              <%= f.number_field :count, step: "1", placeholder: "個数入力", min: 1, style:"width:100px"  %>
+              <%= f.number_field :count, step: "1", value: 1, min: 1, style:"width:100px"  %>
             </div>
             <div class="d-flex justify-content-center">
               <%= f.submit "カートに入れる", class: "btn btn-warning rounded-pill" %>
@@ -66,7 +66,7 @@
             <%= form_with model: @review, url: item_reviews_path(@item) do |f| %>
               <!--星評価-->
               <div class="form-group row" id="evaluate_stars">
-                <%= f.label :rate,'総合評価', class:'col-md-3 col-form-label' %>
+                <%= f.label :rate,'総合評価', class:'col-md-5 col-form-label' %>
                 <%= f.hidden_field :rate, id: :review_star %>
               </div>
               <!--レビュー-->
@@ -82,7 +82,7 @@
 <!--星評価javascript/投稿する-->
 <script>
   $('#evaluate_stars').raty({
-    size     : 1,
+    size     : 10,
     starOff:  '<%= asset_path('star-off.png') %>',
     starOn : '<%= asset_path('star-on.png') %>',
     starHalf: '<%= asset_path('star-half.png') %>',
