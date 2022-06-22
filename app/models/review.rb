@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  content     :text
+#  evaluation  :float
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  customer_id :integer
