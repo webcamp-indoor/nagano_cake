@@ -24,4 +24,5 @@ class Review < ApplicationRecord
   belongs_to :customer
   
   validates :content, presence: true
+  scope :reviews_with_id, -> { where.not(item_id: nil) }
 end
