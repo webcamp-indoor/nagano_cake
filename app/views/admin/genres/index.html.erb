@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-12">
-      <h2 class="text-center mb-5">ジャンル一覧・追加</h2>
-      <%= form_with model: @genre, url: admin_genres_path do |f| %>
-        <div class="form-group text-center mb-5">
+      <h2 class="text-center mb-3">ジャンル一覧・追加</h2>
+      <%= form_with model: @genre, url: admin_genres_path, local: false do |f| %>
+        <div class="form-group text-center mb-3">
           <%= f.label :name, "ジャンル名" %>
-          <%= f.text_field :name %>
-          <%= f.submit "新規登録", class:"btn btn-success ml-4" %>
+          <%= f.text_field :name, id:"name" %>
+          <%= f.submit "新規登録", class:"btn btn-warning rounded-pill ml-4" %>
         </div>
       <% end %>
     </div>
@@ -22,14 +22,8 @@
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <% @genres.each do |genre| %>
-            <tr>
-              <td><%= genre.name %></td>
-              <td><%= link_to "編集する", edit_admin_genre_path(genre), class:"btn btn-success" %></td>
-              <td><%= link_to "削除する", admin_genre_path(genre), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class:"btn btn-danger" %></td>
-            </tr>
-          <% end %>
+        <tbody id="genre_table">
+          <%= render "admin/genres/genre_table", genres: @genres %>
         </tbody>
       </table>
     </div>

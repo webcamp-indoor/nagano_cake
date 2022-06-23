@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
-    <div class="col-12">
-      <h2 class="text-center mb-5">商品編集</h2>
+    <div class="col-6 offset-3">
+      <h2 class="text-center mb-3">商品編集</h2>
       <%= form_with model:@item, url: admin_item_path, method: :patch do |f| %>
         <table class="table mb-4">
           <tr>
@@ -14,7 +14,7 @@
           </tr>
           <tr>
             <td><%= f.label :introduction, "商品説明" %></td>
-            <td><%= f.text_area :introduction %></td>
+            <td><%= f.text_area :introduction, class:"w-100" %></td>
           </tr>
           <tr>
             <td><%= f.label :genre_id, "ジャンル" %></td>

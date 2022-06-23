@@ -7,15 +7,16 @@ class Admin::GenresController < ApplicationController
   end
 
   def create
+    @genres = Genre.all
     genre = Genre.new(genre_params)
     if genre.save
       flash[:notice] = '新規登録しました'
-      redirect_to admin_genres_path
+      # redirect_to admin_genres_path
     else
       @genre = Genre.new #エラー後に続けて入力するために必要
       @genres = Genre.all #エラー後に続けて入力するために必要
       flash[:alert] = '入力してください'
-      render :index
+      # render :index
     end
   end
 
@@ -34,8 +35,9 @@ class Admin::GenresController < ApplicationController
 
   def destroy
     @genre.destroy
+    @genres = Genre.all
     flash[:notice] = "削除しました"
-    redirect_to admin_genres_path
+    # redirect_to admin_genres_path
   end
 
   private

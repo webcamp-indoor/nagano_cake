@@ -1,0 +1,5 @@
+$("#address_index").html("<%= j(render "public/addresses/index", addresses: @addresses )%>");
+$("#post_code").val("");
+$("#address").val("");
+$("#name").val("");
+$('#flash-message').html("<%= j(render 'layouts/flash') %>");

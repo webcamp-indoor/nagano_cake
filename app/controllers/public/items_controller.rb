@@ -8,7 +8,7 @@ class Public::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
     @genres = Genre.all
-    
+
     @reviews = @item.reviews_with_id
     @review = @reviews.new
   end
