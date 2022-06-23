@@ -8,14 +8,13 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = current_customer.cartitems.new(cart_items_params)
+    @cart_item = current_customer.cart_items.new(cart_items_params)
     # 商品がカートに存在するか確認
     @old_cart_item = CartItem.find_by(item: @cart_item.item)
     # カートに入れた商品が、カート内に存在するか検証
     if @old_cart_item.present? and @cart_item.valid?
       # もしカート内にあれば、カート内にあった個数と新しく入れた個数を足す
       @cart_item.count += @old_cart_item.count
-      # カート内にあった個数は消す
       @old_cart_item.destroy
     end
     # 保存する
