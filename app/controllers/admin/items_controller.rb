@@ -20,7 +20,7 @@ class Admin::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = Item.page(params[:page]).per(10)
+    @items = Item.pagination(10, params)
   end
 
   def show
@@ -41,9 +41,8 @@ class Admin::ItemsController < ApplicationController
 
   def genre_search
     @genres = Genre.all
-    params_genre = params[:id]
     items = Item.genre_search(params[:genre_id])
-    @items = items.page(params[:page]).per(10)
+    @items = items.pagination(10, params)
     @genre_name = Genre.find(params[:genre_id]).name
   end
 

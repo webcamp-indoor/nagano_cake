@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]).per(8)
+    @items = Item.pagination(8, params)
     @genres = Genre.all
   end
 
@@ -16,12 +16,12 @@ class Public::ItemsController < ApplicationController
   def genre_search
     @genres = Genre.all
     items = Item.genre_search(params[:genre_id])
-    @items = items.page(params[:page]).per(8)
+    @items = items.pagination(8, params)
     @genre_name = Genre.find(params[:genre_id]).name
   end
 
   def word_search
     @genres = Genre.all
-    @items_search = Item.search(params[:keyword]).page(params[:page]).per(8)
+    @items_search = Item.search(params[:keyword]).pagination(8, params)
   end
 end

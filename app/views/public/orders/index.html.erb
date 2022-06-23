@@ -4,7 +4,7 @@
       <h2 class="text-center mb-3">注文履歴一覧</h2>
     </div>
     <div class="col-12">
-      <table class="table">
+      <table class="table table-hover">
         <thead class="table-secondary">
           <tr>
             <th>注文日</th>
@@ -36,6 +36,9 @@
           <% end %>
         </tbody>
       </table>
+      <div class="mt-4 mb-4 justify-content-center d-flex">
+        <%= paginate @orders %>
+      </div>
     </div>
   </div>
 </div>

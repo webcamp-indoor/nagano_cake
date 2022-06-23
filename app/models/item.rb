@@ -48,8 +48,10 @@ class Item < ApplicationRecord
   def self.genre_search(search_genre)
     Item.where(genre_id: search_genre)
   end
-  
+
   def reviews_with_id
      reviews.reviews_with_id
   end
+
+  scope :pagination, -> (count, params) {page(params[:page]).per(count)}
 end
