@@ -4,7 +4,7 @@
       <%= render "public/items/genre", genres: @genres%>
     </div>
     <div class="col-5 text-center">
-      <%= image_tag @item.get_image(400,400),style:"height:auto; width:400px; object-fit: cover" %>
+      <%= image_tag @item.get_image(600,600),style:"height:auto; width:400px; object-fit: cover" %>
     </div>
     <div class="col-3">
       <h3 class="font-weight-bold mb-3"><%= @item.name %></h3>

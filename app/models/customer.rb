@@ -34,7 +34,7 @@ class Customer < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :addresses, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  
+
   validates :address, presence: true
   validates :first_name, presence: true
   validates :first_name_kana, presence: true, format: { with: /\A[ァ-ヶー－]+\z/ }
@@ -47,4 +47,6 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  
+  scope :pagination, -> (count, params) {page(params[:page]).per(count)}
 end

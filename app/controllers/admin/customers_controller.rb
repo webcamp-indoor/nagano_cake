@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
   before_action :set_customer,  only: [:show, :edit, :update,:destroy]
 
   def index
-    @customers = Customer.page(params[:page]).per(10)
+    @customers = Customer.pagination(10, params)
   end
 
   def show
@@ -23,7 +23,7 @@ class Admin::CustomersController < ApplicationController
 
   def order_index
     @customer = Customer.find(params[:id])
-    @orders = Order.where(customer_id: @customer.id).page(params[:page]).per(10)
+    @orders = Order.where(customer_id: @customer.id).pagination(10, params)
   end
 
   private

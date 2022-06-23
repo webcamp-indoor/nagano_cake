@@ -57,7 +57,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all #ページネーションつけてもいいかも
+    @orders = Order.pagination(10, params)
   end
 
   def show
