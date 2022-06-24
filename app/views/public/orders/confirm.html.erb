@@ -33,16 +33,20 @@
     </div>
   </div>
   <div class="mb-4">
-    <span>支払方法：</span>
-    <%= @order.payment_method_i18n %>
+    <h5>
+      支払方法：
+      <%= @order.payment_method_i18n %>
+    </h5>
   </div>
   <div class="mb-4">
-    お届け先：
-    <%= "〒" + @order.post_code + " " + @order.address + " " + @order.name %> 様
+    <h5>
+      お届け先：
+      <%= "〒" + @order.post_code + " " + @order.address + " " + @order.name %> 様
+    </h5>
   </div>
   <div class="text-center mb-5">
     <%= form_with model:@order, url: orders_path, method: :post do |f| %>
-      <%= f.submit "注文を確定する", class:"btn btn-success" %>
+      <%= f.submit "注文を確定する", class:"btn btn-danger btn-lg rounded-pill" %>
       <%= f.hidden_field :address %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :payment_method %>
