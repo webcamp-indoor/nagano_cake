@@ -1,15 +1,27 @@
-<div class="container mt-3">
-  <div class="row">
+<div class="container mt-4">
+  <div class="row mb-3">
     <div class="col-12">
       <h2 class="text-center">注文情報入力</h2>
-      <%= form_with model:@order, url:confirm_orders_path, method: :post do |f|%>
+    </div>
+  </div>
+  <%= form_with model:@order, url:confirm_orders_path, method: :post do |f|%>
+    <div class="row mb-3">
+      <div class="col-5 text-right">
         <h3>支払方法</h3>
-          <%= f.radio_button :payment_method, Order.payment_methods.key(0), class:"ml-5" %>
-          <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %> <br>
+      </div>
+      <div class="col-5">
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0), class:"ml-5" %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %> <br>
 
-          <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-5" %>
-          <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1), class:"ml-5" %>
+        <%= f.label :payment_method, Order.payment_methods_i18n[:transfer]%>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5 text-right">
         <h3>お届け先</h3>
+      </div>
+      <div class="col-5">
         <div class="ml-5">
           <%= f.radio_button :address_select, 0, checked: true %>
           <%= f.label :address_select, "ご自身の住所" %> <br>
@@ -19,7 +31,7 @@
         <div class="ml-5">
           <%= f.radio_button :address_select, 1 %>
           <%= f.label :address_select, "登録済住所から選択" %> <br>
-          <div class="ml-3"><%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %></div>
+          <div class="ml-3"><%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %></div>
         </div>
         <div class="ml-5">
           <%= f.radio_button :address_select, 2 %>
@@ -37,12 +49,14 @@
             <%= f.text_field :name %>
           </div>
         </div>
-        <div class="text-center mb-3">
-          <%= f.submit "確認画面へ進む", class:"btn btn-primary"%>
-        </div>
-      <% end %>
+      </div>
     </div>
-  </div>
+    <div class="row">
+      <div class="col-12 text-center mb-4">
+        <%= f.submit "確認画面へ進む", class:"btn btn-primary btn-lg rounded-pill"%>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 

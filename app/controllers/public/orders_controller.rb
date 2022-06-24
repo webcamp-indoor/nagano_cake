@@ -26,8 +26,8 @@ class Public::OrdersController < ApplicationController
         @order.name = @address.name
       end
     elsif @address_select == "2"
-      if params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?
-        flash[:alert] = "住所が登録されていません"
+      if @order.invalid?
+        flash[:alert] = "入力が間違っています"
         redirect_to new_order_path
       end
     end
