@@ -47,6 +47,6 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
-  scope :pagination, -> (count, params) {page(params[:page]).per(count)}
+
+  scope :pagination, -> (count, params) { page(params[:page]).per(count) }
 end
