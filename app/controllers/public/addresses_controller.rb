@@ -7,7 +7,7 @@ class Public::AddressesController < ApplicationController
   end
 
   def create
-    @addresses = current_customer.addresses.where.not(post_code: nil, name: nil,address:nil)
+    @addresses = current_customer.addresses.where.not(post_code: nil, name: nil, address: nil)
     @address = Address.new
     @address = current_customer.addresses.new(address_params)
     if @address.save
@@ -18,7 +18,6 @@ class Public::AddressesController < ApplicationController
       # render "public/addresses/index"
     end
   end
-
 
   def edit
     @address = current_customer.addresses.find(params[:id])
@@ -32,7 +31,6 @@ class Public::AddressesController < ApplicationController
       flash.now[:alert] = '変更に失敗しました'
       render :edit
     end
-
   end
 
   def destroy
@@ -44,6 +42,7 @@ class Public::AddressesController < ApplicationController
   end
 
   private
+
   def address_params
     params.require(:address).permit(:post_code, :address, :name)
   end

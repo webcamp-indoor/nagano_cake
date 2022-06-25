@@ -46,7 +46,8 @@ class Public::OrdersController < ApplicationController
         order_detail.save
       end
       if params[:address_select] == "2"
-        current_customer.addresses.create(address: order.address, name: order.name, post_code: order.post_code)
+        current_customer.addresses.create(address: order.address,
+                                          name: order.name, post_code: order.post_code)
       end
       cart_items.destroy_all
       redirect_to complete_orders_path
@@ -69,6 +70,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:address, :name, :payment_method, :post_code, :postage, :status, :total_payment)
+    params.require(:order).permit(Order.attribute_names)
   end
 end
