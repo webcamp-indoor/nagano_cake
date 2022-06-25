@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
       flash[:notice] = '新規登録しました'
       redirect_to admin_items_path
     else
-      @item = Item.new #エラー後に続けて入力するために必要
+      @item = Item.new # エラー後に続けて入力するために必要
       flash[:alert] = '入力が間違っています'
       render :new
     end

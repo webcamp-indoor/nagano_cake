@@ -5,21 +5,21 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    # 新規登録後のパスを変更
-    def after_sign_up_path_for(resource)
-      customers_path(resource)
-    end
+  # 新規登録後のパスを変更
+  def after_sign_up_path_for(resource)
+    customers_path(resource)
+  end
 
-    # 新規登録の保存関連
-    def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up,
-  		  keys: [
-  			  :first_name, :last_name, :first_name_kana, :last_name_kana,
-          :email, :post_code, :address, :phone_number
+  # 新規登録の保存関連
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up,
+        keys: [
+          :first_name, :last_name, :first_name_kana, :last_name_kana,
+          :email, :post_code, :address, :phone_number,
         ])
 
-  		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
-    end
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+  end
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]

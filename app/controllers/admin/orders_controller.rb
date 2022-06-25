@@ -18,7 +18,6 @@ class Admin::OrdersController < ApplicationController
     redirect_to admin_order_path(@order.id)
   end
 
-
   private
 
   def order_params
@@ -28,5 +27,4 @@ class Admin::OrdersController < ApplicationController
   def set_order
     @order = Order.find(params[:id])
   end
-
 end

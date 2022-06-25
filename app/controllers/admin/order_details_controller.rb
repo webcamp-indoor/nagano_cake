@@ -8,7 +8,7 @@ class Admin::OrderDetailsController < ApplicationController
     if @order_detail.making_status == "in_making"
       @order_detail.order.update(status: "in_making")
     end
-    if @order_details.all? {|order_detail| order_detail.making_status == "making_complete"}
+    if @order_details.all? { |order_detail| order_detail.making_status == "making_complete" }
       @order_detail.order.update(status: "preparing_shipping")
     end
     flash[:notice] = "製作ステータスを更新しました"

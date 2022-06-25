@@ -53,6 +53,7 @@
 * gem 'annotate'
 * gem "enum_help"
 * gem "jquery-rails"
+* gem "rubocop-airbnb"
 
 
 # その他
