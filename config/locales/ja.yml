@@ -1,0 +1,25 @@
+  ja: # 日本語の設定を行う
+    enums: # enumの設定を行う
+      order: # モデル名（Orderモデルに対して）
+        payment_method: # カラム名（payment_methodカラムに対して）
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+        status:
+          payment_waiting: "入金待ち"
+          payment_confirmation: "入金確認"
+          in_making: "製作中"
+          preparing_shipping: "発送準備中"
+          shipping: "発送済み"
+      orderdetail:
+        making_status:
+          not_startable: "着手不可"
+          waiting_making: "製作待ち"
+          in_making: "製作中"
+          making_complete: "製作完了"
+    views:
+      pagination:
+        first: <i class="fas fa-angle-double-left"></i>
+        last: <i class="fas fa-angle-double-right"></i>
+        previous: <i class="fas fa-angle-left"></i>
+        next: <i class="fas fa-angle-right"></i>
+        truncate: "..."

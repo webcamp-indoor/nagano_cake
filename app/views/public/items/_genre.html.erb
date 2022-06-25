@@ -1,0 +1,9 @@
+<div class="mt-5">
+  <h5>ジャンル</h5>
+</div>
+<hr style="border-bottom:double">
+<div>
+  <% genres.each do |genre| %>
+  <%= link_to genre.name, genre_search_items_path(genre_id: genre.id), class:"btn btn-info btn-sm rounded-pill mb-2" %> <br>
+  <% end %>
+</div>

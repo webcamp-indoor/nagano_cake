@@ -1,0 +1,3 @@
+$("#genre_table").html("<%= j(render "admin/genres/genre_table", genres: @genres )%>");
+$("#name").val("");
+$('#flash-message').html("<%= j(render 'layouts/flash') %>");

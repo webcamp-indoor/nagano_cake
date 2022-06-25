@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id             :integer          not null, primary key
+#  address        :string           not null
+#  name           :string           not null
+#  payment_method :integer          default("credit_card"), not null
+#  post_code      :string           not null
+#  postage        :integer          default(800), not null
+#  status         :integer          default("payment_waiting"), not null
+#  total_payment  :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  customer_id    :integer          not null
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

@@ -1,0 +1,197 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import 'header';
+header{
+  height: 100px;
+  background-color:#dcdcdc;
+}
+
+a:hover{
+  text-decoration:none;
+}
+.welcome-customer {
+ ligh-height: 100px;
+ color: #636262;
+}
+.store-name {
+  text-decoration: none;
+  color: #181717;
+  font-size: 40px;
+  line-height: 100px;
+}
+
+//top
+.top-visual{
+  position: relative;
+  &_content{
+    position: absolute;
+    color: #1a3755;
+    font-weight: bold;
+    font-size: 2em;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    margin:0;
+    padding:0;
+  }
+  &_image{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+}
+//about
+.main-visual_image{
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+}
+//footer
+footer {
+  background-color: #dcdcdc;
+}
+
+.footer-text {
+  color: #636262;
+}
+
+//フラッシュメッセージ
+.notifications {
+  color: #fff;
+  text-align: center;
+  position :absolute;
+  top: 10;
+  width: 100%;
+  z-index: 3;
+}
+.notice {
+  background-color:#38AEF0;
+}
+
+.alert {
+  padding: 0;
+  background-color:  #F35500;
+  htight: 20px;
+}
+
+//about
+
+.content {
+  max-width: 1000px;
+  height: 698px;
+  margin: 0px auto;
+  position: relative;
+}
+
+.text {
+  max-width: 680px;
+  padding: 84px 160px 84px 84px;
+  position: absolute;
+  left: 0;
+  background-color: #F5F2EC;
+}
+.text p {
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.text .title {
+  border-bottom: solid 1px #35383a;
+  display: inline-block;
+  font-size: 1.875rem;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+.text .large {
+  font-size: 1.875rem;
+}
+
+.text .btn {
+  display: inline-block;
+  border: solid 1px #35383a;
+  border-radius: 30px;
+  padding: 16px 50px;
+  transition: all 0.3s ease;
+}
+.text .btn:hover {
+  background-color: #efeded;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+
+  .content {
+    height: auto;
+    position: static;
+    margin: 0;
+  }
+  .text {
+    max-width: 100%;
+    padding: 60px 20px;
+    position: static;
+  }
+
+  .main-visual_image{
+    img{
+      max-width: 100%;
+      position: static;
+    }
+  }
+}
+.cards__item {
+
+  flex-basis: 25%;
+
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #ff002b;     /*背景の色を変える*/
+  border-radius: 50%;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 50%;
+}/*角を丸くする*/
+
+.card:hover {
+  background-color: black;
+}
+
+// cart_items/indexで使用css ここから
+.cart_box {
+  background: #fff;
+  border: 1px #ccc solid;
+  box-shadow: 0 2px 3px 0 #ddd;
+  font-size: 100%;
+  padding: 20px;
+}
+
+.table .item_table {
+	vertical-align: middle;
+	padding: 0 0 4px 0;
+}
+
+.price_box {
+  background: #fff;
+  border: 1px #ccc solid;
+  box-shadow: 0 2px 3px 0 #ddd;
+  font-size: 100%;
+  padding: 20px 20px 80px 20px;
+}
+// cart_items/indexで使用css ここまで

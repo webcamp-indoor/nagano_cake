@@ -1,0 +1,17 @@
+<% addresses.each do |address| %>
+  <tr>
+    <td>
+      <%= address.post_code %>
+    </td>
+    <td class="text-left">
+      <%= address.address %>
+    </td>
+    <td class="text-left">
+      <%= address.name %>
+    </td>
+    <td align="center">
+      <%= link_to "編集する", edit_address_path(address.id), class: "btn-sm btn-primary rounded-pill" %>
+      <%= link_to "削除する", address_path(address.id) , method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger rounded-pill" %></td>
+    </td>
+  </tr>
+<% end %>

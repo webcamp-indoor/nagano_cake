@@ -1,0 +1,44 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-2">
+      <%= render "admin/items/genre", genres: @genres%>
+    </div>
+    <div class="col-10">
+      <h2 class="text-center">ジャンル検索結果商品一覧 "<%= @genre_name %>"</h2>
+      <div class="text-right">
+        <%= link_to "商品新規登録", new_admin_item_path, class:"btn btn-danger rounded-pill mb-4" %>
+          <table class="table table-hover">
+            <thead class="table-secondary">
+              <tr>
+                <th>商品ID</th>
+                <th>商品名</th>
+                <th>税抜価格</th>
+                <th>ジャンル</th>
+                <th>ステータス</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @items.each do |item|%>
+                <tr>
+                  <td><%= item.id %></td>
+                  <td><%= link_to item.name, admin_item_path(item), class:"text-primary" %></td>
+                  <td><%= item.price.to_s(:delimited) %></td>
+                  <td><%= item.genre.name %></td>
+                  <td>
+                    <% if item.is_active == true %>
+                      <span class="font-weight-bold text-success">販売中</span>
+                    <% else %>
+                      <span class="font-weight-bold text-muted">販売停止中</span>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="mt-4 mb-4 justify-content-center d-flex">
+            <%= paginate @items %>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
