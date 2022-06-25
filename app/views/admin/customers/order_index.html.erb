@@ -17,7 +17,7 @@
             <tr>
               <td><%= link_to order.created_at.strftime('%Y/%m/%d  %H:%M:%S'), admin_order_path(order), class:"text-primary" %></td>
               <td>
-                <%= order.order_details.count %>
+                <%= order.order_details.inject(0) {|sum, hash| sum + hash[:count]} %>
               </td>
               <td><%= order.status_i18n %></td>
             </tr>
